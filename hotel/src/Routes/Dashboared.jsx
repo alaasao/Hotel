@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import Sidebar from "./Sidebar";
 import Rightside from "./Rightside";
-
+import DashCard from "./DashCard";
+import Context from "../Context";
 const Dashboared = () => {
   let [bookingTot, setBookingTot] = React.useState(30000); //ift needs to be fetched from api
   let [doneBooking, setDoneBooking] = React.useState(12000); //ift needs to be fetched from api
@@ -170,28 +171,27 @@ const Dashboared = () => {
   ]);
   let [bookings, setBookings] = React.useState(arr); //ift needs to be fetched from api
   let [startIndex, setStartIndex] = React.useState(0); //ift needs to be fetched from api
-  let [endIndex, setEndIndex] = React.useState(Math.min(5, bookings.length)); //ift needs to be fetched from api
+  let [endIndex, setEndIndex] = React.useState(Math.min(6, bookings.length)); //ift needs to be fetched from api
 
   let [showList, setShowList] = React.useState(
     bookings.slice(startIndex, endIndex)
   );
-  console.log(startIndex, endIndex);
-  console.log(bookings.slice(startIndex, endIndex));
+ let { smallScreen ,tooSmall} = React.useContext(Context);
   let [currentPage, setCurrentPage] = React.useState(1); //ift needs to be fetched from api
   let [pages, SetPages] = React.useState([
-    ...Array(Math.ceil(bookings.length / 5)).keys(),
+    ...Array(Math.ceil(bookings.length / 6)).keys(),
   ]);
   useEffect(() => {
     SetPages([...Array(Math.ceil(bookings.length / 6)).keys()]);
     setStartIndex(0);
-    setEndIndex(Math.min(5, bookings.length));
+    setEndIndex(Math.min(6, bookings.length));
   }, [bookings]);
   useEffect(() => {
     setShowList(bookings.slice(startIndex, endIndex));
   }, [startIndex, endIndex, bookings]);
-
+ console.log(window.innerHeight)
   return (
-    <div className="wi flex w-[100vw] justify-start absolute left-[240px] top-0 h-[100vh] pl-[32px] pt-[60px] flex-col font-[Outfit]">
+    <div className={` flex w-[100vw] justify-start  h-[100vh] pl-[32px] pt-[60px] flex-col font-[Outfit]  ${smallScreen?"smallwi h-[auto]":"wi"} max-lg:w-[95vw] max-xl:mt-[50px] `}>
       <div className=" border border-[1px] h-[48px] border-[#E6E6E6] rounded-[4px] flex items-center">
         <div className="w-[52px] h-[100%] flex items-center justify-center">
           {" "}
@@ -207,7 +207,7 @@ const Dashboared = () => {
           onChange={(e) => {
             setBookings(
               bookings.filter((booking) =>
-                booking.username.includes(e.target.value)
+                booking.username.toLowerCase().includes(e.target.value.toLowerCase())
               )
             );
             e.target.value === "" && setBookings(arr);
@@ -249,7 +249,7 @@ const Dashboared = () => {
           </div>
         </div>
       </div>
-      <div className="mt-[70px] text-[#080808] flex justify-between h-[70px] items-end ">
+      <div className="mt-[20px] text-[#080808] flex justify-between h-[70px] items-end ">
         <div className="flex flex-col h-[100%] justify-between  ">
           {" "}
           <p className="text-[18px]">All users</p>{" "}
@@ -262,7 +262,8 @@ const Dashboared = () => {
           Filter
         </button>
       </div>
-      <div className="w-[100%]  h-[55px] grid grid-cols-5 mt-[17px] bg-[#f7f7f7]">
+      <div></div>
+      <div className="w-[100%]  h-[55px] grid grid-cols-5 mt-[0px] bg-[#f7f7f7]">
         <div className="pl-[24px] flex items-center">User</div>
         <div className="flex items-center justify-center ">Status</div>
         <div className="pl-[24px] flex items-center justify-center">Date</div>
@@ -271,49 +272,19 @@ const Dashboared = () => {
       </div>
       {showList.map((e, i) => {
         return (
-          <div
-            className="w-[100%]  h-[55px] grid grid-cols-5 mt-[17px] "
+          <DashCard
             key={i}
-          >
-            <div className="flex gap-[8px] items-center">
-              <img src={e.img} className="rounded-[50%]" />
-              <p className="font-semibold text-[12px] text-[#808080] font-[Manrope]">
-                {" "}
-                {e.username}
-              </p>
-            </div>
-            <div
-              className={`w-[65px] h-[23px] text-[12px] rounded-[5px] flex justify-center items-center justify-self-center self-center text-white ${
-                e.status === "Done"
-                  ? "bg-[#28CC42]"
-                  : e.status === "Cancel"
-                  ? "bg-[#CC2828]"
-                  : e.status === "Pending"
-                  ? "bg-[#8E8E8E]"
-                  : "text-[#999999]"
-              }`}
-            >
-              {e.status}
-            </div>
-            <div className="flex justify-center gap-[7px] items-center flex-wrap ">
-              {e.start_date}{" "}
-              {e.start_date && <i className="fa-solid fa-arrow-right"></i>}{" "}
-              {e.end_date}
-            </div>
-            <div className="flex items-center justify-center shrink">
-              {e.suite && (
-                <i className="fa-solid fa-circle-check text-[#999999] "></i>
-              )}
-            </div>
-            <div className="flex items-center justify-center shrink">
-              {e.room && (
-                <i className="fa-solid fa-circle-check text-[#999999]"></i>
-              )}
-            </div>
-          </div>
+            img={e.img}
+            username={e.username}
+            start_date={e.start_date}
+            end_date={e.end_date}
+            status={e.status}
+            room={e.room}
+            suite={e.suite}
+          />
         );
       })}
-      <div className="flex gap-[24px] font-[Manrope] cursor-pointer">
+      <div className="flex gap-[24px] font-[Manrope] cursor-pointer mt-[36px]">
         {startIndex > 0 && (
           <button
             className="text-[#9F9F9F] font-semibold  text-[12px] font-[Manrope]"

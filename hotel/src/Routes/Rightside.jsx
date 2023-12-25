@@ -1,11 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Context from "../Context";
 const Rightside = () => {
-  let [user, setuser] = useState({
-    username: "Ahmed Ahmed",
-    superuser: true,
-  }); // it need to be fetched from the database
+  let { smallScreen ,setSmallScreen,user,setUser} = React.useContext(Context);
+ // it need to be fetched from the database
   let [customers, setCustomers] = useState([
     { username: "Karima ", booking: 20, img: "../assets/karima.png" },
     { username: "Karim", booking: 5, img: "../assets/karim.png" },
@@ -20,8 +19,8 @@ const Rightside = () => {
  
    
   return (
-    <div className="absolute right-0 top-0 w-[430px]  font-[Outfit] h-[100vh] flex flex-col justify-evenly pr-[68px]">
-      <div className="flex gap-x-[8px] ml-[124px]">
+    <div className=" w-[430px]  font-[Outfit] h-[100vh] flex flex-col justify-evenly pr-[68px] max-lg:items-center  max-lg:w-[96vw] max-lg:h-auto max-lg:mt-[50px]">
+      {!smallScreen && <div className="flex gap-x-[8px] ml-[124px]">
         <img src="../assets/profile.png" className="w-[40px] h-[40px]" />
         <div className="w-[134px]">
           <p className="text-[#3B28CC] font-semibold text-[14px] leading-[16px] h-[16px] overflow-hidden">
@@ -34,7 +33,7 @@ const Rightside = () => {
         <div className="w-[40px] h-[40px] bg-[#F2F2F2] flex justify-center items-center rounded-[50px]">
           <i className="fa-regular fa-bell"></i>
         </div>
-      </div>
+      </div>}
       <div className="flex flex-col items-center gap-y-[30px] ">
         <h1 className="text-[22px] text-[#3B28CC] ">Loyal Customers</h1>
               <div className="flex flex-col gap-[8px]">

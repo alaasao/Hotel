@@ -4,3 +4,6 @@
 .wi{
     width: calc(100vw - 690px);
 }
+.smallwi{
+    width: calc(100vw - 430px);
+}

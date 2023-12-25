@@ -1,13 +1,16 @@
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useLocation  } from "react-router-dom";
 
-
+import Context from "../Context";
+import React from "react";
 const Sidebar = () => {
+  let { showSidebar, setShowSidebar ,smallScreen,setSmallScreen} = React.useContext(Context)
+  
   const history = useLocation ();
   const currentPath = history.pathname.split("/")[1];
 
   return (
-    <div className="h-[100vh] w-[240px] bg-[#F2F2F2] pt-[6.4vh] flex flex-col items-center font-[Manrope] absolute left-0">
+    <div className={`h-[100vh] w-[240px] bg-[#F2F2F2] pt-[6.4vh] flex flex-col items-center font-[Manrope]   ${smallScreen && !showSidebar ?"hidden":""} ${ showSidebar?" max-xl:w-[100vw] max-xl:z-[100] absolute":""}`} onClick={()=>setShowSidebar(false)}>
       <img src="../assets/logo.png" className="w-[50px] pb-[131px]" />
       <ul className="font-medium leading-[24px] w-[167px] ">
         <NavLink
