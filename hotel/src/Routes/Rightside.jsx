@@ -19,8 +19,8 @@ const Rightside = () => {
  
    
   return (
-    <div className=" w-[430px]  font-[Outfit] h-[100vh] flex flex-col justify-evenly pr-[68px] max-lg:items-center  max-lg:w-[96vw] max-lg:h-auto max-lg:mt-[50px]">
-      {!smallScreen && <div className="flex gap-x-[8px] ml-[124px]">
+    <div className=" w-[430px]  font-[Outfit] h-[100vh] flex flex-col items-center justify-evenly pr-[20px] max-lg:items-center  max-lg:w-[96vw] max-lg:h-auto max-lg:mt-[50px]">
+      {!smallScreen && <div className="flex gap-x-[8px] ">
         <img src="../assets/profile.png" className="w-[40px] h-[40px]" />
         <div className="w-[134px]">
           <p className="text-[#3B28CC] font-semibold text-[14px] leading-[16px] h-[16px] overflow-hidden">
@@ -48,7 +48,7 @@ const Rightside = () => {
                 <p className="text-[#4C4C4C] w-[89px] overflow-hidden ">
                   {loyal.username}{" "}
                 </p>
-                <div className="text-[12px] text-[#808080]">
+                <div className="text-[12px] text-[#808080] w-[100px]">
                   +{loyal.booking - 1} Bookings
                 </div>
               </div>
@@ -65,11 +65,11 @@ const Rightside = () => {
       <div className="flex flex-col items-center justify-between h-[290px] pt-[54px] pb-[79px]">
         <p className="text-[#3B28CC] text-[22px]">Async Data</p>
         <p className="text-[20px] text-center" >
-          For async data between local storage and database.
+          For async data between local storage <br /> and database.
               </p>
               <button className="w-[120px] h-[37px] bg-[#3B28CC] rounded-[3px] text-[20px] text-white ">Async</button>
           </div>
-          <p className="self-end ">{date.getDate()}/{date.getMonth()+1}/{date.getFullYear()}</p>
+          <p className="self-end pr-[20px]">{date.getDate()}/{date.getMonth()+1}/{date.getFullYear()}</p>
     </div>
   );
 };

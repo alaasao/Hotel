@@ -15,13 +15,13 @@ const DashCard = ({img,username,status,start_date,end_date,suite,room,i}) => {
               </p>
             </div>
             <div
-              className={`w-[65px] h-[23px] text-[12px] rounded-[5px] flex justify-center items-center justify-self-center self-center text-white ${
+              className={`w-[70px] h-[26px] text-[14px] rounded-[5px] flex justify-center items-center justify-self-center self-center ${
                  status === "Done"
-                  ? "bg-[#28CC42]"
+                  ? "bg-[#28CC42] text-[#FFFBFF]"
                   :  status === "Cancel"
-                  ? "bg-[#CC2828]"
+                  ? "bg-[#CC2828] text-[#FFFBFF]"
                   :  status === "Pending"
-                  ? "bg-[#8E8E8E]"
+                  ? "bg-[#8E8E8E] text-[#FFFBFF]"
                   : "text-[#999999]"
               }`}
             >

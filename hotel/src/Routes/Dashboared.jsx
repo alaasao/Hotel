@@ -191,7 +191,7 @@ const Dashboared = () => {
   }, [startIndex, endIndex, bookings]);
  console.log(window.innerHeight)
   return (
-    <div className={` flex w-[100vw] justify-start  h-[100vh] pl-[32px] pt-[60px] flex-col font-[Outfit]  ${smallScreen?"smallwi h-[auto]":"wi"} max-lg:w-[95vw] max-xl:mt-[50px] `}>
+    <div className={` flex w-[100vw] justify-start  h-[100vh] pl-[32px] pt-[60px] mr-[20px] flex-col font-[Outfit]  ${smallScreen?"smallwi h-[auto]":"wi"} max-lg:w-[95vw] max-xl:mt-[50px] `}>
       <div className=" border border-[1px] h-[48px] border-[#E6E6E6] rounded-[4px] flex items-center">
         <div className="w-[52px] h-[100%] flex items-center justify-center">
           {" "}

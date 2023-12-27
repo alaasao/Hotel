@@ -1,0 +1,311 @@
+.booking, 
+.users,
+.rooms {
+    width: calc(100% - 670px);
+    padding: 60px  32px;
+}
+input {
+    font-weight: 500 !important;
+}
+.special {
+    color: var(--Primary-Color, #3B28CC);
+    font-family: Outfit;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.booking h1, 
+.users h1,
+.rooms h1 {
+    margin: 60px 0 37px !important;
+    padding-left: 30px;
+}
+.booking ul,
+.users ul,
+.rooms ul {
+    padding-left: 30px;
+}
+.booking ul li,
+.users ul li,
+.rooms ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: solid 2px #F2F2F2;
+}
+/* booking */
+.booking ul li div {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.booking ul li div img {
+    cursor: pointer;
+}
+.booking ul li > span {
+    width: 150px;
+    text-align: center;
+}
+.booking ul li div > span:nth-of-type(1) {
+    color: #808080;
+    font-family: Manrope;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 16px;
+}
+.booking ul li > span:nth-of-type(1) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 26px;
+    border-radius: 5px;
+    font-family: Outfit;
+    font-size: 14px;
+    font-weight: 400;
+}
+.booking ul li span:nth-of-type(2) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--Neutral1, #8E8E8E);
+    font-family: Outfit;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.booking ul li span:nth-of-type(3) {
+    color: var(--Typo-Color, #080808);
+    font-family: Outfit;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 30px;
+} 
+/* booking */
+/* users */
+.users ul li:nth-of-type(1) {
+    padding-top: 0 ;
+} 
+.users ul li div {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.users ul li div img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+.users ul li div span:nth-of-type(1) {
+    color: #808080;
+    font-family: Manrope;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 16px;
+    padding-right: 120px;
+} 
+.users ul li div span:nth-of-type(2) {
+    color: var(--Neutral1, #8E8E8E);
+    font-family: Outfit;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+} 
+/* users */
+/* rooms */
+.rooms ul li span:not(span:nth-of-type(1)){
+    text-align: center;
+    width: 150px;
+}
+.rooms ul li span:nth-of-type(1) {
+    color: var(--Typo-Color, #080808);
+    font-family: Outfit;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+}
+.rooms ul li span:nth-of-type(2),
+.rooms ul li span:nth-of-type(4)  {
+    color: var(--Neutral1, #8E8E8E);
+    font-family: Outfit;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.rooms ul li span:nth-of-type(3) {
+    color: var(--Secondary-Color, #6656E1);
+    font-family: Outfit;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+.rooms ul li button {
+    display: flex;
+    width: 79px;
+    height: 24px;
+    padding: 16px 54px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    border-radius: 3px;
+    background: var(--Primary-Color, #3B28CC);
+    color: #FFFFFF;
+}
+/* rooms */
+/* AddBooking - Delete */
+.addBooking,
+.delete, 
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+.overlay {
+    background: rgba(49,49,49,0.5);
+}
+.addBooking .content, 
+.delete .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    padding: 42px 28px;
+    border-radius: 8px;
+    background: #FFF;
+    width: 781px;
+    height: 438px;
+}
+.delete .content {
+    width: 494px;
+    height: 202px;
+}
+.addBooking h3,
+.delete h3 {
+    color: var(--Primary-Color, #3B28CC);
+    font-family: Outfit;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
+    margin-bottom: 50px;
+}
+.delete h3 {
+    margin-bottom: 0;
+}
+.delete p {
+    color: var(--Neutral1, #8E8E8E);
+    font-family: Outfit;
+    font-size: 15px;
+    font-weight: 400;
+    margin: 12px 0 26px;
+}
+.addBooking .content form {
+    display: flex;
+    flex-direction: column;
+}
+.addBooking .content form > input {
+    width: 414px;
+    height: 55px;
+    margin: 0 auto;
+    padding: 8px;
+    border-radius: 7px;
+    background: #E9E9E9;
+    color: var(--Typo-Color, #080808);
+    font-family: Outfit;
+    font-size: 18px;
+    font-weight: 400;
+    outline: none;
+}
+.addBooking .content form > input:nth-of-type(2) {
+    margin: 20px auto;
+}
+.addBooking .content form > input::placeholder {
+    color: #080808;
+}
+.addBooking .content form .date {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 414px;
+    margin: 0 auto 36px;
+}
+.addBooking .content form .date div {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
+.addBooking .content form .date input {
+    width: 202px;
+    height: 55px;
+    padding: 8px;
+    border-radius: 7px;
+    background: #E9E9E9;
+    color: var(--Typo-Color, #080808);
+    font-family: Outfit;
+    font-size: 18px;
+    font-weight: 400;
+    outline: none;
+}
+.addBooking .content form .date svg {
+    position: absolute;
+    top: 16px;
+}
+.addBooking .content form .date .first {
+    left: 38%;
+}
+.addBooking .content form .date .second {
+    right: -4px;
+}
+.addBooking .content form .date input::placeholder {
+    color: #080808;
+}
+.addBooking .content form .buttons,
+.delete .content .buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 414px;
+    margin: 0 auto;
+}
+.delete .content .buttons {
+    width: 296px;
+}
+.addBooking .content form .buttons button,
+.delete .content .buttons button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 194px;
+    height: 39px;
+    padding: 12px 54px;
+    border-radius: 3px;
+}
+.delete .content .buttons button {
+    width: 140px;
+}
+.addBooking .content form .buttons button:nth-of-type(1),
+.delete .content .buttons button:nth-of-type(1) {
+    background: var(--Primary-Color, #3B28CC);
+    color: #FFF;
+    font-family: Outfit;
+    font-size: 15px;
+    font-weight: 400;
+} 
+.addBooking .content form .buttons button:nth-of-type(2),
+.delete .content .buttons button:nth-of-type(2) {
+    border: 1px solid var(--Neutral1, #8E8E8E);
+    color: var(--Neutral1, #8E8E8E);
+    font-family: Outfit;
+    font-size: 15px;
+    font-weight: 400;
+}
+/* addBooking - Delete */
