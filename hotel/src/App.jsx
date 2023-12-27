@@ -38,30 +38,43 @@ function App() {
   });
   let [smallScreen, setSmallScreen] = useState(window.innerWidth < 1280);
   let [showSidebar, setShowSidebar] = useState(false);
-   let [tooSmall,setTooSmall]=useState(window.innerWidth< 1024)
-  window.addEventListener("resize", () =>
-{    setSmallScreen(window.innerWidth < 1280)
-    setTooSmall(window.innerWidth <1024)}
-
-  );
+  let [tooSmall, setTooSmall] = useState(window.innerWidth < 1024);
+  window.addEventListener("resize", () => {
+    setSmallScreen(window.innerWidth < 1280);
+    setTooSmall(window.innerWidth < 1024);
+  });
   return (
     <BrowserRouter>
       <Context.Provider
-        value={{ smallScreen, setSmallScreen, showSidebar, setShowSidebar ,user,setUser ,tooSmall,setTooSmall}}
+        value={{
+          smallScreen,
+          setSmallScreen,
+          showSidebar,
+          setShowSidebar,
+          user,
+          setUser,
+          tooSmall,
+          setTooSmall,
+        }}
       >
-        <div className={`flex ${tooSmall?"flex-col ":""}`}>
-        <Sidebar />
-        {smallScreen && !showSidebar && <Nav />}
-        <Routes>
-          {routes.map((route, index) => (
-            <Route
-              path={route.link}
-              element={<route.component />}
-              key={index}
-            />
-          ))}
-        </Routes>
-        <Rightside /></div>
+        <div
+          className={`flex ${tooSmall ? "flex-col " : ""} ${
+            showSidebar ? "h-[100vh] w-[100vw] overflow-hidden" : ""
+          }`}
+        >
+          <Sidebar />
+          {smallScreen && !showSidebar && <Nav />}
+          <Routes>
+            {routes.map((route, index) => (
+              <Route
+                path={route.link}
+                element={<route.component />}
+                key={index}
+              />
+            ))}
+          </Routes>
+          <Rightside />
+        </div>
       </Context.Provider>
     </BrowserRouter>
   );

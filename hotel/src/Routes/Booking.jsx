@@ -1,25 +1,34 @@
-import React, {useState} from 'react'
-import { bookingData } from '../Data'
-import Delete from './Delete'
-import img1 from '../../public/assets/search-normal.png'
-import img2 from "../../public/assets/arrow.png"
-import img3 from '../../public/assets/cancel-01.svg'
-import img4 from "../../public/assets/CheckFat.png"
+import React, { useState } from "react";
+import { bookingData } from "../Data";
+import Delete from "./Delete";
+import img1 from "../../public/assets/search-normal.png";
+import img2 from "../../public/assets/arrow.png";
+import img3 from "../../public/assets/cancel-01.png";
+import img4 from "../../public/assets/CheckFat.png";
+import BookCard from "./BookCard";
+import Pagination from "./Pagination";
+import { useEffect } from "react";
 
 const Booking = () => {
-
-  const [model, setModel] = useState(false)
+  const [model, setModel] = useState(false);
 
   const toogleModle = () => {
-    setModel(!model)
-  }
+    setModel(!model);
+  };
+
+  let article_per_page = 11;
+  let [bookings, setBookings] = useState(bookingData);
+
+  let [showList, setShowList] = React.useState(
+    bookings.slice(0, article_per_page)
+  );
 
   return (
-    <div className='booking'>
+    <div className="booking">
       <div className=" border border-[1px] h-[48px] border-[#E6E6E6] rounded-[4px] flex items-center">
         <div className="w-[52px] h-[100%] flex items-center justify-center">
           {" "}
-          <img src={img1} alt="" className='pl-[16px]' />
+          <img src={img1} alt="" className="pl-[16px]" />
         </div>
         <input
           type="text"
@@ -29,46 +38,42 @@ const Booking = () => {
           className="h-[100%] w-[45vw] pl-[8px] placeholder:text-[#4C4C4C] placeholder:text-[18px] focus:outline-none"
           onChange={(e) => {
             setBookings(
-              bookings.filter((booking) =>
-                booking.username.includes(e.target.value)
+              bookingData.filter((booking) =>
+                booking.username.toLowerCase().includes(e.target.value.toLowerCase())
               )
             );
-            e.target.value === "" && setBookings(arr);
+            e.target.value === "" && setBookings(bookingData);
+            console.log(bookings);
           }}
         />
       </div>
-      <h1 className='special'>Booking</h1>
+      <h1 className="special">Booking</h1>
       <ul>
-        {bookingData.map((booking) => {
-          return(
-            <li>
-              <div>
-                <img src={booking.img} alt="person" />
-                <span>{booking.name}</span>
-              </div>
-              <span className={
-                    booking.status === "Done"
-                    ? "bg-[#28CC42] text-[#FFFBFF]" 
-                    : booking.status === "Cancel"
-                    ? "bg-[#CC2828] text-[#FFFBFF]" 
-                    : booking.status === "Pending"
-                    ? "bg-[#8E8E8E] text-[#FFFBFF]"
-                    : "text-[#999999]"
-              }>{booking.status}</span>
-
-              <span>{booking.dateOpen} <img src={img2} alt="" /> {booking.dateEnd}</span>
-              <span>{booking.roomNumber}</span>
-              <div className="buttons">
-                <img src={img4} alt="icon" />
-                <img src={img3} alt="icon" onClick={toogleModle}/>
-              </div>
-            </li>
-          )
+        {showList.map((booking, index) => {
+          return (
+            <BookCard
+              username={booking.username}
+              status={booking.status}
+              start_date={booking.start_date}
+              end_date={booking.end_date}
+              room={booking.room}
+              img={booking.img}
+              suite={booking.suite}
+              key={index}
+              toogleModle={toogleModle}
+            />
+          );
         })}
       </ul>
+      <Pagination
+        article_per_page={article_per_page}
+        arr={bookings}
+        showList={showList}
+        setShowList={setShowList}
+      />
       {model && <Delete />}
     </div>
-  )
-}
+  );
+};
 
-export default Booking
+export default Booking;

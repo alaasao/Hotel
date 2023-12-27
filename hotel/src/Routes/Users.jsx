@@ -2,7 +2,8 @@ import React, {useState} from 'react'
 import img from '../../public/assets/search-normal.png'
 import { usersData } from '../Data'
 import Delete from './Delete'
-
+import Pagination from './Pagination'
+import UserCard from './UserCard'
 const Users = () => {
 
   const [delModel, setDelModel] = useState(false)
@@ -10,6 +11,9 @@ const Users = () => {
   const DeleteModal = () => {
       setDelModel(!delModel)
   }
+  let article_per_page = 11;
+  let [users, setUsers] = useState(usersData)
+  let [showList, setShowList] = React.useState(users.slice(0, article_per_page));
 
   return (
     <div className='users'>
@@ -26,30 +30,27 @@ const Users = () => {
           placeholder="Search users,rooms"
           className="h-[100%] w-[45vw] pl-[8px] placeholder:text-[#4C4C4C] placeholder:text-[18px] focus:outline-none"
           onChange={(e) => {
-            setBookings(
-              bookings.filter((booking) =>
-                booking.username.includes(e.target.value)
+            setUsers(
+              usersData.filter((user) =>
+                user.username.toLowerCase().includes(e.target.value.toLowerCase())
               )
             );
-            e.target.value === "" && setBookings(arr);
+            console.log(users)
+            e.target.value === "" && setUsers(usersData);
           }}
         />
       </div>
       <h1 className='special'>Users</h1>
       <ul>
-        {usersData.map((user) => {
+        {showList.map((user, i) => {
+                  console.log(user.delete)
           return(
-            <li>
-              <div>
-                <img src={user.img} alt="person" />
-                <span>{user.nameUser}</span>
-                <span>{user.date}</span>
-              </div>
-              <img src={user.delete} alt="cancel" style={{cursor: "pointer"}} onClick={DeleteModal}/>
-            </li>
+
+            <UserCard username={user.username} date={user.date} img={user.img} delete={user.delete} DeleteModal={DeleteModal} key={i} />
           )
         })}
       </ul>
+      <Pagination article_per_page={article_per_page} arr={users} showList={showList} setShowList={setShowList}/>
       {delModel && <Delete/>}
     </div>
   )

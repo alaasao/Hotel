@@ -1,8 +1,43 @@
-.booking, 
-.users,
-.rooms {
-    width: calc(100% - 670px);
-    padding: 60px  32px;
+
+@media screen and (min-width: 1280px) {
+    body{
+        height: 100vh;
+    overflow: hidden;
+    }
+    
+}
+
+
+@media screen and (min-width: 1280px) {
+    .booking, 
+    .users,
+    .rooms {
+
+        width: calc(100% - 670px);
+        padding: 60px  32px;
+
+    }
+    
+}
+@media screen and (min-width: 1024px) {
+    .booking, 
+    .users,
+    .rooms {
+        
+        width: calc(100% - 430px);
+        padding: 60px  32px;
+    }
+    
+}
+@media screen and (max-width: 1280px) {
+    .booking, 
+    .users,
+    .rooms{
+        padding: 60px  32px;
+        padding-top: 90px;
+
+    }
+    
 }
 input {
     font-weight: 500 !important;
@@ -18,7 +53,7 @@ input {
 .booking h1, 
 .users h1,
 .rooms h1 {
-    margin: 60px 0 37px !important;
+    margin: 40px 0 20px !important;
     padding-left: 30px;
 }
 .booking ul,
@@ -54,6 +89,10 @@ input {
     font-size: 15px;
     font-weight: 700;
     line-height: 16px;
+    width: 70px;
+    overflow: hidden;
+  
+
 }
 .booking ul li > span:nth-of-type(1) {
     display: flex;

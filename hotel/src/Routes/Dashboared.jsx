@@ -3,6 +3,7 @@ import Sidebar from "./Sidebar";
 import Rightside from "./Rightside";
 import DashCard from "./DashCard";
 import Context from "../Context";
+import Pagination from "./Pagination";
 const Dashboared = () => {
   let [bookingTot, setBookingTot] = React.useState(30000); //ift needs to be fetched from api
   let [doneBooking, setDoneBooking] = React.useState(12000); //ift needs to be fetched from api
@@ -169,29 +170,21 @@ const Dashboared = () => {
       id: 8,
     },
   ]);
+  let article_per_page = 6;
   let [bookings, setBookings] = React.useState(arr); //ift needs to be fetched from api
-  let [startIndex, setStartIndex] = React.useState(0); //ift needs to be fetched from api
-  let [endIndex, setEndIndex] = React.useState(Math.min(6, bookings.length)); //ift needs to be fetched from api
 
   let [showList, setShowList] = React.useState(
-    bookings.slice(startIndex, endIndex)
+    bookings.slice(0, article_per_page)
   );
- let { smallScreen ,tooSmall} = React.useContext(Context);
-  let [currentPage, setCurrentPage] = React.useState(1); //ift needs to be fetched from api
-  let [pages, SetPages] = React.useState([
-    ...Array(Math.ceil(bookings.length / 6)).keys(),
-  ]);
-  useEffect(() => {
-    SetPages([...Array(Math.ceil(bookings.length / 6)).keys()]);
-    setStartIndex(0);
-    setEndIndex(Math.min(6, bookings.length));
-  }, [bookings]);
-  useEffect(() => {
-    setShowList(bookings.slice(startIndex, endIndex));
-  }, [startIndex, endIndex, bookings]);
- console.log(window.innerHeight)
+  let { smallScreen, tooSmall } = React.useContext(Context);
+
+
   return (
-    <div className={` flex w-[100vw] justify-start  h-[100vh] pl-[32px] pt-[60px] mr-[20px] flex-col font-[Outfit]  ${smallScreen?"smallwi h-[auto]":"wi"} max-lg:w-[95vw] max-xl:mt-[50px] `}>
+    <div
+      className={` flex w-[100vw] justify-start  h-[100vh] pl-[32px] pt-[60px] mr-[20px] flex-col font-[Outfit]  ${
+        smallScreen ? "smallwi h-[auto]" : "wi"
+      } max-lg:w-[95vw] max-xl:mt-[50px] `}
+    >
       <div className=" border border-[1px] h-[48px] border-[#E6E6E6] rounded-[4px] flex items-center">
         <div className="w-[52px] h-[100%] flex items-center justify-center">
           {" "}
@@ -207,7 +200,9 @@ const Dashboared = () => {
           onChange={(e) => {
             setBookings(
               bookings.filter((booking) =>
-                booking.username.toLowerCase().includes(e.target.value.toLowerCase())
+                booking.username
+                  .toLowerCase()
+                  .includes(e.target.value.toLowerCase())
               )
             );
             e.target.value === "" && setBookings(arr);
@@ -284,53 +279,12 @@ const Dashboared = () => {
           />
         );
       })}
-      <div className="flex gap-[24px] font-[Manrope] cursor-pointer mt-[36px]">
-        {startIndex > 0 && (
-          <button
-            className="text-[#9F9F9F] font-semibold  text-[12px] font-[Manrope]"
-            onClick={() => {
-              setStartIndex((prev) => (prev > 0 ? prev - 6 : 0));
-              setEndIndex((prev) => (prev > 5 ? prev - 6 : 5));
-            }}
-          >
-            Previous page
-          </button>
-        )}
-        <div className="flex gap-[8px]">
-          {" "}
-          {pages.map((page, index) => (
-            <div
-              key={index}
-              className={`w-[20px] h-[20px] rounded-[50%] flex justify-center items-center text-[12px] ${
-                startIndex / 6 === page
-                  ? "bg-[#3B28CC] text-white"
-                  : "bg-[#E6E6E6] text-[#4C4C4C]"
-              }`}
-              onClick={() => {
-                setStartIndex(page * 6);
-                setEndIndex((page + 1) * 6);
-              }}
-            >
-              {page + 1}
-            </div>
-          ))}
-        </div>
-        {endIndex <= bookings.length && endIndex != 0 && (
-          <button
-            className="text-[#9F9F9F] font-semibold text-[12px] "
-            onClick={() => {
-              setStartIndex((prev) =>
-                prev < bookings.length - 5 ? prev + 6 : bookings.length - 6
-              );
-              setEndIndex((prev) =>
-                prev < bookings.length ? prev + 6 : bookings.length
-              );
-            }}
-          >
-            Next page
-          </button>
-        )}
-      </div>
+   <Pagination
+        article_per_page={article_per_page}
+        arr={bookings}
+        showList={showList}
+        setShowList={setShowList}
+      />
     </div>
   );
 };
