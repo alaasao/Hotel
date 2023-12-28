@@ -398,6 +398,7 @@ input {
     .booking, .users, .rooms {
         padding: 60px 26px 0;
         padding-top: 90px;
+        margin-bottom: 120px;
     }
     .booking h1, .users h1, .rooms h1 {
         padding-left: 0;
