@@ -19,8 +19,8 @@ const Rightside = () => {
  
    
   return (
-    <div className=" w-[430px]  font-[Outfit] h-[100vh] flex flex-col items-center justify-evenly pr-[20px] max-lg:items-center  max-lg:w-[96vw] max-lg:h-auto max-lg:mt-[50px]">
-      {!smallScreen && <div className="flex gap-x-[8px] ">
+    <div className="rightSide w-[430px]  font-[Outfit] h-[100vh] flex flex-col items-center gap-[120px] pr-[20px] max-lg:items-center  max-lg:w-[96vw] max-lg:h-auto max-lg:mt-[50px]">
+      {!smallScreen && <div className="flex gap-x-[8px] pt-[61px]">
         <img src="../assets/profile.png" className="w-[40px] h-[40px]" />
         <div className="w-[134px]">
           <p className="text-[#3B28CC] font-semibold text-[14px] leading-[16px] h-[16px] overflow-hidden">
@@ -34,7 +34,7 @@ const Rightside = () => {
           <i className="fa-regular fa-bell"></i>
         </div>
       </div>}
-      <div className="flex flex-col items-center gap-y-[30px] ">
+      <div className="flex flex-col items-center gap-y-[30px]">
         <h1 className="text-[22px] text-[#3B28CC] ">Loyal Customers</h1>
               <div className="flex flex-col gap-[8px]">
                   
@@ -62,7 +62,7 @@ const Rightside = () => {
           View all{" "}
         </Link>
       </div>
-      <div className="flex flex-col items-center justify-between h-[290px] pt-[54px] pb-[79px]">
+      <div className="flex flex-col items-center gap-[12px]">
         <p className="text-[#3B28CC] text-[22px]">Async Data</p>
         <p className="text-[20px] text-center" >
           For async data between local storage <br /> and database.

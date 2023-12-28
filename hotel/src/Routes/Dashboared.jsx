@@ -170,7 +170,7 @@ const Dashboared = () => {
       id: 8,
     },
   ]);
-  let article_per_page = 6;
+  let article_per_page = 8;
   let [bookings, setBookings] = React.useState(arr); //ift needs to be fetched from api
 
   let [showList, setShowList] = React.useState(
@@ -181,7 +181,7 @@ const Dashboared = () => {
 
   return (
     <div
-      className={` flex w-[100vw] justify-start  h-[100vh] pl-[32px] pt-[60px] mr-[20px] flex-col font-[Outfit]  ${
+      className={`dashBoard flex w-[100vw] justify-start  h-[100vh] pl-[32px] pt-[60px] mr-[20px] flex-col font-[Outfit]  ${
         smallScreen ? "smallwi h-[auto]" : "wi"
       } max-lg:w-[95vw] max-xl:mt-[50px] `}
     >
@@ -209,8 +209,8 @@ const Dashboared = () => {
           }}
         />
       </div>
-      <div className="mt-[80px] flex flex-col gap-[34px]">
-        <p className="  text-[18px] text-[#4C4C4C]">In the last 30 days,</p>
+      <div className="mt-[80px] firstElement flex flex-col gap-[20px]">
+        <p className="text-[18px] text-[#4C4C4C]">In the last 30 days,</p>
         <div className="w-[100%] flex gap-[22px]  ">
           <div className="relative">
             {" "}
@@ -229,7 +229,7 @@ const Dashboared = () => {
               <p className=" text-[35px] leading-normal">
                 {doneBooking.toLocaleString()}
               </p>{" "}
-              <p className="text-[15px] leading-[30px]">Done Booking</p>
+              <p className="text-[15px] leading-[30px]">Done <br /> Booking</p>
             </div>
           </div>
           <div className="relative">
@@ -258,12 +258,12 @@ const Dashboared = () => {
         </button>
       </div>
       <div></div>
-      <div className="w-[100%]  h-[55px] grid grid-cols-5 mt-[0px] bg-[#f7f7f7]">
-        <div className="pl-[24px] flex items-center">User</div>
-        <div className="flex items-center justify-center ">Status</div>
-        <div className="pl-[24px] flex items-center justify-center">Date</div>
-        <div className="pl-[24px] flex items-center justify-center">Suite</div>
-        <div className="pl-[24px] flex items-center justify-center">Room</div>
+      <div className="w-[100%] h-[55px] px-[10px] flex justify-between mt-[0px] bg-[#f7f7f7]">
+        <div className="w-[150px] user nameImg flex items-center">User</div>
+        <div className="w-[80px] status flex items-center justify-center ">Status</div>
+        <div className="date1 w-[200px] flex items-center justify-center">Date</div>
+        <div className="suite flex w-[100px] items-center justify-center">Suite</div>
+        <div className="room flex w-[100px] items-center justify-center">Room</div>
       </div>
       {showList.map((e, i) => {
         return (

@@ -1,5 +1,6 @@
 import React from "react";
-import img1 from "../../public/assets/search-normal.png";
+import imgIcon from '../../public/assets/cancel-01-light.svg'
+import img1 from '../../public/assets/CheckFat-light.svg'
 import img2 from "../../public/assets/arrow.png";
 import img3 from "../../public/assets/cancel-01.png";
 import img4 from "../../public/assets/CheckFat.png";
@@ -42,10 +43,17 @@ const BookCard = ({
       </span>
       <span>{room ? `Room ${room}` : `Suite ${suite}`}</span>
       <div className="buttons w-[70px] flex justify-end">
+        {status === "Done" && <img src={img1} alt="icon" />}
+        {status === "Done" && <img src={img3} alt="icon" onClick={toogleModle} />}
+        
         {status === "Pending" && <img src={img4} alt="icon" />}
-        {status !== "Cancel" && status !== "Unverified" && (
-          <img src={img3} alt="icon" onClick={toogleModle} />
-        )}
+        {status === "Pending" && <img src={img3} alt="icon" onClick={toogleModle} />}
+
+        {status === "Cancel" && <img src={img1} alt="icon" />}
+        {status === "Cancel" && <img src={imgIcon} alt="icon" />}
+
+        {status === "Unverified" && <img src={img1} alt="icon" />}
+        {status === "Unverified" && <img src={imgIcon} alt="icon" />}
       </div>
     </li>
   );

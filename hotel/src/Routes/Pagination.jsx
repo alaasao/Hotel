@@ -2,8 +2,6 @@ import React from 'react'
 import { useEffect } from 'react'
 const Pagination = ({article_per_page,arr,showList,setShowList}) => {
 
-   
-
     let [startIndex, setStartIndex] = React.useState(0); //ift needs to be fetched from api
     let [endIndex, setEndIndex] = React.useState(Math.min( article_per_page , arr.length)); //ift needs to be fetched from api
   
@@ -21,10 +19,10 @@ const Pagination = ({article_per_page,arr,showList,setShowList}) => {
       setShowList(arr.slice(startIndex, endIndex));
     }, [startIndex, endIndex, arr]);
   return (
-    <div className="flex gap-[24px] font-[Manrope] cursor-pointer mt-[20px]">
+    <div className="flex gap-[24px] font-[Manrope] cursor-pointer mt-[30px] pagination">
     {startIndex > 0 && (
       <button
-        className="text-[#9F9F9F] font-semibold  text-[12px] font-[Manrope]"
+        className="text-[#9F9F9F] font-semibold  text-[15px] font-[Manrope]"
         onClick={() => {
           setStartIndex((prev) => (prev > 0 ? prev - article_per_page  : 0));
           setEndIndex((prev) => (prev >  article_per_page  - 1 ? prev - article_per_page  :  article_per_page  - 1));
@@ -38,7 +36,7 @@ const Pagination = ({article_per_page,arr,showList,setShowList}) => {
       {pages.length>1 && pages.map((page, index) => (
         <div
           key={index}
-          className={`w-[20px] h-[20px] rounded-[50%] flex justify-center items-center text-[12px] ${
+          className={`w-[28px] h-[28px] rounded-[50%] flex justify-center items-center text-[15px] ${
             startIndex /  article_per_page  === page
               ? "bg-[#3B28CC] text-white"
               : "bg-[#E6E6E6] text-[#4C4C4C]"
@@ -54,7 +52,7 @@ const Pagination = ({article_per_page,arr,showList,setShowList}) => {
     </div>
     {endIndex <   arr.length && endIndex != 0 && (
       <button
-        className="text-[#9F9F9F] font-semibold text-[12px] "
+        className="text-[#9F9F9F] font-semibold text-[15px] "
         onClick={() => {
           setStartIndex((prev) =>
             prev <  arr.length -  article_per_page  - 1 ? prev + article_per_page  :  arr.length - article_per_page 

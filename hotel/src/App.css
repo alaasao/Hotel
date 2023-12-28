@@ -50,6 +50,11 @@ input {
     font-weight: 400;
     line-height: normal;
 }
+.booking, 
+.users,
+.rooms {
+    height: 100vh;
+}
 .booking h1, 
 .users h1,
 .rooms h1 {
@@ -69,6 +74,16 @@ input {
     justify-content: space-between;
     padding: 14px 0;
     border-bottom: solid 2px #F2F2F2;
+}
+.pagination {
+    padding: 22px 22px;
+    border-radius: 6px;
+    background: #F7F7F7;
+}
+.booking .pagination, 
+.users .pagination,
+.rooms .pagination {
+    margin-left: 20px;
 }
 /* booking */
 .booking ul li div {
@@ -124,9 +139,6 @@ input {
 } 
 /* booking */
 /* users */
-.users ul li:nth-of-type(1) {
-    padding-top: 0 ;
-} 
 .users ul li div {
     display: flex;
     align-items: center;
@@ -184,13 +196,9 @@ input {
 
 .rooms ul li button {
     display: flex;
-    width: 79px;
-    height: 24px;
-    padding: 16px 54px;
+    padding: 4px 24px;
     justify-content: center;
     align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
     border-radius: 3px;
     background: var(--Primary-Color, #3B28CC);
     color: #FFFFFF;
@@ -346,5 +354,168 @@ input {
     font-family: Outfit;
     font-size: 15px;
     font-weight: 400;
+}
+@media (max-width: 768px) {
+    .dashBoard {
+        width: 100vw !important;
+        padding: 60px 20px 0 !important;
+        margin-right: 0 !important;
+    }
+    .firstElement {
+        margin-top: 30px !important;
+    }
+    .firstElement .relative div {
+        padding-left: 8px;
+    }
+    .firstElement .relative p:nth-of-type(1) {
+        font-size: 26px;
+    }   
+    .firstElement .relative p:nth-of-type(2) {
+        line-height: 18px;
+    }
+    .date1 {
+        display: none !important;
+    }
+    .status {
+        width: 70px !important;
+    }
+    .suite,
+    .room {
+        width: 60px !important;
+    }
+    .nameImg {
+        width: 120px !important;
+    }
+    .user {
+        justify-content: center;
+    }
+    .nameImg p {
+        font-size: 14px;
+    }
+    .dateItem {
+        display: none !important;
+    }
+    .booking, .users, .rooms {
+        padding: 60px 26px 0;
+        padding-top: 90px;
+    }
+    .booking h1, .users h1, .rooms h1 {
+        padding-left: 0;
+        font-size: 32px;
+    }
+    .booking ul, .users ul, .rooms ul {
+        padding-left: 0;
+    }
+    .booking ul li span:nth-of-type(2) {
+        display: none;
+    }
+    .booking ul li div {
+        gap: 10px;
+    }
+    .booking ul li div:nth-of-type(1) img {
+        width: 30px;
+        height: 30px;
+    }
+    .booking ul li div > span:nth-of-type(1) {
+        font-size: 13px;
+    }
+    .booking ul li .buttons img {
+        width: 20px;
+    }
+    .booking ul li > span:nth-of-type(1) {
+        width: 60px;
+        height: 20px;
+        font-size: 12px;
+    }
+    .booking ul li span:nth-of-type(3) {
+        padding-left: 20px;
+    }
+    .booking ul li > span {
+        width: 80px;
+    }
+    .booking .pagination, .users .pagination, .rooms .pagination {
+        margin-left: 0;
+    }
+    .users ul li img {
+        width: 20px;
+    }
+    .users ul li div span:nth-of-type(1),
+    .users ul li div span:nth-of-type(2) {
+        font-size: 14px;
+    }
+    .rooms ul li span {
+        font-size: 14px !important;
+    }
+    .rooms ul li span {
+        width: 100px !important;   
+    }
+    .rooms ul li span:nth-of-type(1) {
+        width: 48px !important;
+    }
+    .rooms ul li span:nth-of-type(3),
+    .rooms ul li span:nth-of-type(4) {
+        width: 60px !important;
+    } 
+    .rooms ul li span:nth-of-type(4) {
+        padding-right: 10px;
+    }
+    .rooms ul li span:nth-of-type(2) {
+        width: 70px !important;
+    }
+    .rooms ul li button {
+        font-size: 14px;
+        padding: 4px 10px;
+     }
+    .rightSide {
+        width: 100vw !important;
+        padding: 0 0 40px !important;
+        gap: 80px !important;
+    }
+    .self-end {
+        display: none;
+    }
+    .addBooking .content {
+        width: 370px;
+        height: 380px;
+    }
+    .addBooking .content form > input {
+        width: 320px;
+        height: 46px;
+    }
+    .delete .content {
+        width: 370px;
+        height: 200px;
+    }
+    .addBooking h3 {
+        margin-bottom: 36px;
+    }
+    .delete .content .buttons,
+    .addBooking .content form .buttons,
+    .addBooking .content form .date {
+        width: 320px;
+    }
+    .addBooking .content form .date {
+        margin-bottom: 20px;
+    }
+    .delete .content .buttons button,
+    .addBooking .content form .buttons button,
+    .addBooking .content form .date input {
+        width: 150px;
+    }
+    .addBooking .content form .date input {
+        height: 46px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1280px) {
+    .rightSide {
+        padding-top: 90px;
+        gap: 90px !important;
+    }
+    .firstElement {
+        margin-top: 42px !important;
+    }
+    .self-end {
+        align-self: center !important;
+    }
 }
 /* addBooking - Delete */

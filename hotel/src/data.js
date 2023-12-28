@@ -63,7 +63,7 @@ export const bookingData = [
   {
     username: "Bluenose",
     img: "../assets/image 12.png",
-    status: "Done",
+    status: "Pending",
     start_date: "12/12/2021",
     end_date: "15/12/2021",
     suite: 1,
@@ -83,7 +83,7 @@ export const bookingData = [
   {
     username: "Bluenose",
     img: "../assets/image 12.png",
-    status: "Done",
+    status: "Pending",
     start_date: "12/12/2021",
     end_date: "15/12/2021",
     suite: 1,
@@ -103,7 +103,7 @@ export const bookingData = [
   {
     username: "Bluenose",
     img: "../assets/image 12.png",
-    status: "Done",
+    status: "Pending",
     start_date: "12/12/2021",
     end_date: "15/12/2021",
     suite: 1,
@@ -226,12 +226,54 @@ export const usersData = [
     date: "10/01/24",
     delete: "../public/assets/cancel-01.svg",
   },
+  {
+    id: 9,
+    img: "../public/assets/Ellipse 3.png",
+    username: "Bluenose",
+    date: "10/01/24",
+    delete: "../public/assets/cancel-01.svg",
+  },
+  {
+    id: 9,
+    img: "../public/assets/Ellipse 3.png",
+    username: "Bluenose",
+    date: "10/01/24",
+    delete: "../public/assets/cancel-01.svg",
+  },
+  {
+    id: 9,
+    img: "../public/assets/Ellipse 3.png",
+    username: "Bluenose",
+    date: "10/01/24",
+    delete: "../public/assets/cancel-01.svg",
+  },
+  {
+    id: 9,
+    img: "../public/assets/Ellipse 3.png",
+    username: "Bluenose",
+    date: "10/01/24",
+    delete: "../public/assets/cancel-01.svg",
+  },
+  {
+    id: 9,
+    img: "../public/assets/Ellipse 3.png",
+    username: "Bluenose",
+    date: "10/01/24",
+    delete: "../public/assets/cancel-01.svg",
+  },
+  {
+    id: 9,
+    img: "../public/assets/Ellipse 3.png",
+    username: "Bluenose",
+    date: "10/01/24",
+    delete: "../public/assets/cancel-01.svg",
+  },
 ];
 
 export const roomsData = [
   {
     id: 1,
-        room: 1,
+    room: 1,
     suite: null,    
     beds: "Single Bed",
     persons: "1 Person",
@@ -240,7 +282,7 @@ export const roomsData = [
  
   {
     id: 2,
-        room: null,
+    room: null,
     suite: 1,    
     beds: "Single Bed",
     persons: "1 Person",
@@ -248,7 +290,7 @@ export const roomsData = [
     },
   {
     id: 1,
-        room: 1,
+    room: 1,
     suite: null,    
     beds: "Single Bed",
     persons: "1 Person",
@@ -257,7 +299,7 @@ export const roomsData = [
  
   {
     id: 2,
-        room: null,
+    room: null,
     suite: 1,    
     beds: "Single Bed",
     persons: "1 Person",
@@ -265,7 +307,7 @@ export const roomsData = [
     },
   {
     id: 1,
-        room: 1,
+    room: 1,
     suite: null,    
     beds: "Single Bed",
     persons: "1 Person",
@@ -274,7 +316,7 @@ export const roomsData = [
  
   {
     id: 2,
-        room: null,
+    room: null,
     suite: 1,    
     beds: "Single Bed",
     persons: "1 Person",
@@ -282,7 +324,7 @@ export const roomsData = [
     },
   {
     id: 1,
-        room: 1,
+    room: 1,
     suite: null,    
     beds: "Single Bed",
     persons: "1 Person",
@@ -291,7 +333,7 @@ export const roomsData = [
  
   {
     id: 2,
-        room: null,
+    room: null,
     suite: 1,    
     beds: "Single Bed",
     persons: "1 Person",
@@ -299,7 +341,7 @@ export const roomsData = [
     },
   {
     id: 1,
-        room: 1,
+    room: 1,
     suite: null,    
     beds: "Single Bed",
     persons: "1 Person",
@@ -308,7 +350,7 @@ export const roomsData = [
  
   {
     id: 2,
-        room: null,
+    room: null,
     suite: 1,    
     beds: "Single Bed",
     persons: "1 Person",
@@ -316,7 +358,7 @@ export const roomsData = [
     },
   {
     id: 1,
-        room: 1,
+    room: 1,
     suite: null,    
     beds: "Single Bed",
     persons: "1 Person",
@@ -325,7 +367,7 @@ export const roomsData = [
  
   {
     id: 2,
-        room: null,
+    room: null,
     suite: 1,    
     beds: "Single Bed",
     persons: "1 Person",
@@ -333,7 +375,7 @@ export const roomsData = [
     },
   {
     id: 1,
-        room: 1,
+    room: 1,
     suite: null,    
     beds: "Single Bed",
     persons: "1 Person",
@@ -342,7 +384,7 @@ export const roomsData = [
  
   {
     id: 2,
-        room: null,
+    room: null,
     suite: 1,    
     beds: "Single Bed",
     persons: "1 Person",
@@ -350,7 +392,7 @@ export const roomsData = [
     },
   {
     id: 1,
-        room: 1,
+    room: 1,
     suite: null,    
     beds: "Single Bed",
     persons: "1 Person",
@@ -359,7 +401,7 @@ export const roomsData = [
  
   {
     id: 2,
-        room: null,
+    room: null,
     suite: 1,    
     beds: "Single Bed",
     persons: "1 Person",
@@ -367,7 +409,7 @@ export const roomsData = [
     },
   {
     id: 1,
-        room: 3,
+    room: 3,
     suite: null,    
     beds: "Single Bed",
     persons: "1 Person",
@@ -376,7 +418,7 @@ export const roomsData = [
  
   {
     id: 2,
-        room: null,
+    room: null,
     suite: 1,    
     beds: "Single Bed",
     persons: "1 Person",
@@ -384,20 +426,11 @@ export const roomsData = [
     },
   {
     id: 1,
-        room: 1,
+    room: 1,
     suite: null,    
     beds: "Single Bed",
     persons: "1 Person",
     status: "Available",
   },
  
-  {
-    id: 2,
-        room: null,
-    suite: 1,    
-    beds: "Single Bed",
-    persons: "1 Person",
-    status: "Available",
-    },
-  
 ];

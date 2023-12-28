@@ -2,12 +2,8 @@ import React, { useState } from "react";
 import { bookingData } from "../Data";
 import Delete from "./Delete";
 import img1 from "../../public/assets/search-normal.png";
-import img2 from "../../public/assets/arrow.png";
-import img3 from "../../public/assets/cancel-01.png";
-import img4 from "../../public/assets/CheckFat.png";
 import BookCard from "./BookCard";
 import Pagination from "./Pagination";
-import { useEffect } from "react";
 
 const Booking = () => {
   const [model, setModel] = useState(false);
