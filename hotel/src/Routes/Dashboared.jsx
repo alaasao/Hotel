@@ -219,7 +219,7 @@ const Dashboared = () => {
               <p className=" text-[35px] leading-normal">
                 {bookingTot.toLocaleString()}
               </p>{" "}
-              <p className="text-[15px] leading-[30px]">Booking Operations</p>
+              <p className="text-[16px] leading-[16px]">Booking Operations</p>
             </div>
           </div>
           <div className="relative">
@@ -229,7 +229,7 @@ const Dashboared = () => {
               <p className=" text-[35px] leading-normal">
                 {doneBooking.toLocaleString()}
               </p>{" "}
-              <p className="text-[15px] leading-[30px]">Done <br /> Booking</p>
+              <p className="text-[16px] leading-[16px]">Done Booking</p>
             </div>
           </div>
           <div className="relative">
@@ -239,7 +239,7 @@ const Dashboared = () => {
               <p className=" text-[35px] leading-normal">
                 {satasified.toLocaleString()}
               </p>{" "}
-              <p className="text-[15px] leading-[30px]">Satasified Clients</p>
+              <p className="text-[16px] leading-[16px]">Satasified Clients</p>
             </div>
           </div>
         </div>
