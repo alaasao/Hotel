@@ -1,27 +1,38 @@
-import React, {useState} from "react";
+import axios from "axios";
+import React, { useState } from "react";
 
-const Delete = () => {
+const Delete = ({ delModel, setDelModel, id }) => {
+  const DeleteModal = () => {
+    setDelModel(!delModel);
+  };
+  function handleSubmit(e) {
+      e.preventDefault();
+      console.log(e.target.id.value)
+    setDelModel((prev) => !prev);
+    axios
+      .post(`https://aceiny.tech:3331/api/admin/delete-user/${e.target.id.value}`)
+      .catch((err) => {
+        console.log(err);
+      });
+      window.location.reload()
+  }
 
-    const [delModel, setDelModel] = useState(false)
-    const DeleteModal = () => {
-        setDelModel(!delModel)
-    }
+  return (
+    <div className=" delete">
+      <div className="overlay"></div>
+      <div className="flex flex-col content">
+        <h3 className="">Are You Sure?</h3>
+        <p>Please confirm this operation before we start</p>
+        <form action="" onSubmit={handleSubmit}>
+          <div className="buttons">
+            <input type="text" className="hidden" name="id" value={id} />
+            <button type="submit">Confirm</button>
+            <button onClick={DeleteModal}>Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
 
-    return(
-        <div className="delete">
-            <div className="overlay"></div>
-            <div className="content">
-                <h3>Are You Sure?</h3>
-                <p>Please confirm this operation before we start</p>
-                <form action="">
-                    <div className="buttons">
-                        <button type="submit">Confirm</button>
-                        <button onClick={DeleteModal}>Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    )
-}
-
-export default Delete
+export default Delete;

@@ -1,6 +1,6 @@
 
 
-const DashCard = ({img,username,status,start_date,end_date,suite,room,i}) => {
+const DashCard = ({img,username,status,start_date,end_date,roomType,roomNumber,i}) => {
   return (
     <div>
           <div
@@ -16,29 +16,29 @@ const DashCard = ({img,username,status,start_date,end_date,suite,room,i}) => {
             </div>
             <div
               className={`status w-[80px] h-[26px] text-[14px] rounded-[5px] flex justify-center items-center justify-self-center self-center ${
-                 status === "Done"
+                 status === "done"
                   ? "bg-[#28CC42] text-[#FFFBFF]"
                   :  status === "Cancel"
                   ? "bg-[#CC2828] text-[#FFFBFF]"
-                  :  status === "Pending"
+                  :  status === "pending"
                   ? "bg-[#8E8E8E] text-[#FFFBFF]"
                   : "text-[#999999]"
               }`}
             >
-              { status}
+              { status.charAt(0).toUpperCase() + status.slice(1)}
             </div>
             <div className="dateItem w-[200px] flex justify-center gap-[7px] items-center flex-wrap ">
-              { start_date}{" "}
+              { start_date}{" "}d
               { start_date && <i className="fa-solid fa-arrow-right"></i>}{" "}
               { end_date}
             </div>
             <div className="suite w-[100px] flex items-center justify-center shrink">
-              { suite && (
+              { roomType === "suite" && (
                 <i className="fa-solid fa-circle-check text-[#999999] "></i>
               )}
             </div>
             <div className="room w-[100px] flex items-center justify-center shrink">
-              { room && (
+              {  roomType === "room" && (
                 <i className="fa-solid fa-circle-check text-[#999999]"></i>
               )}
             </div>

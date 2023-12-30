@@ -1,182 +1,30 @@
 import React, { useEffect } from "react";
-import Sidebar from "./Sidebar";
-import Rightside from "./Rightside";
+
 import DashCard from "./DashCard";
 import Context from "../Context";
 import Pagination from "./Pagination";
+
 const Dashboared = () => {
+  
+  let {bookingsData} = React.useContext(Context);
   let [bookingTot, setBookingTot] = React.useState(30000); //ift needs to be fetched from api
   let [doneBooking, setDoneBooking] = React.useState(12000); //ift needs to be fetched from api
   let [satasified, setSatasified] = React.useState(17000); //ift needs to be fetched from api
-  let [arr, setArr] = React.useState([
-    {
-      username: "Bluenose",
-      img: "../assets/image 12.png",
-      status: "Pending",
-      start_date: "10/01/24",
-      end_date: "15/12/2021",
-      suite: 1,
-      room: null,
-      id: 1,
-    },
-    {
-      username: "alaa",
-      img: "../assets/image 12.png",
-      status: "Pending",
-      start_date: "10/01/24",
-      end_date: "15/12/2021",
-      suite: 1,
-      room: null,
-      id: 100,
-    },
-    {
-      username: "Bluenose",
-      img: "../assets/Ellipse 3.png",
-      status: "Done",
-      start_date: "10/01/24",
-      end_date: "15/12/2021",
-      suite: null,
-      room: 2,
-      id: 2,
-    },
-    {
-      username: "Bluenose",
-      img: "../assets/Ellipse 3.png",
-      status: "Cancel",
-      start_date: "12/12/2021",
-      end_date: "15/12/2021",
-      suite: null,
-      room: 3,
-      id: 3,
-    },
-    {
-      username: "Bluenose",
-      img: "../assets/Ellipse 3.png",
-      status: "Unverified",
-      start_date: null,
-      end_date: null,
-      suite: 11,
-      room: null,
-      id: 4,
-    },
-    {
-      username: "Bluenose",
-      img: "../assets/Ellipse 3.png",
-      status: "Cancel",
-      start_date: "12/12/2021",
-      end_date: "15/12/2021",
-      suite: null,
-      room: 12,
-      id: 5,
-    },
-    {
-      username: "Bluenose",
-      img: "../assets/image 12.png",
-      status: "Done",
-      start_date: "12/12/2021",
-      end_date: "15/12/2021",
-      suite: 1,
-      room: null,
-      id: 6,
-    },
-    {
-      username: "Bluenose",
-      img: "../assets/image 12.png",
-      status: "Done",
-      start_date: "12/12/2021",
-      end_date: "15/12/2021",
-      suite: 1,
-      room: null,
-      id: 7,
-    },
-    {
-      username: "Bluenose",
-      img: "../assets/image 12.png",
-      status: "Done",
-      start_date: "12/12/2021",
-      end_date: "15/12/2021",
-      suite: 1,
-      room: null,
-      id: 8,
-    },
-    {
-      username: "Bluenose",
-      img: "../assets/image 12.png",
-      status: "Done",
-      start_date: "12/12/2021",
-      end_date: "15/12/2021",
-      suite: 1,
-      room: null,
-      id: 8,
-    },
-    {
-      username: "Bluenose",
-      img: "../assets/image 12.png",
-      status: "Done",
-      start_date: "12/12/2021",
-      end_date: "15/12/2021",
-      suite: 1,
-      room: null,
-      id: 8,
-    },
-    {
-      username: "Bluenose",
-      img: "../assets/image 12.png",
-      status: "Done",
-      start_date: "12/12/2021",
-      end_date: "15/12/2021",
-      suite: 1,
-      room: null,
-      id: 8,
-    },
-    {
-      username: "Bluenose",
-      img: "../assets/image 12.png",
-      status: "Done",
-      start_date: "12/12/2021",
-      end_date: "15/12/2021",
-      suite: 1,
-      room: null,
-      id: 8,
-    },
-    {
-      username: "Bluenose",
-      img: "../assets/image 12.png",
-      status: "Done",
-      start_date: "12/12/2021",
-      end_date: "15/12/2021",
-      suite: 1,
-      room: null,
-      id: 8,
-    },
-    {
-      username: "Bluenose",
-      img: "../assets/image 12.png",
-      status: "Done",
-      start_date: "12/12/2021",
-      end_date: "15/12/2021",
-      suite: 1,
-      room: null,
-      id: 8,
-    },
-    {
-      username: "Bluenose",
-      img: "../assets/image 12.png",
-      status: "Done",
-      start_date: "12/12/2021",
-      end_date: "15/12/2021",
-      suite: 1,
-      room: null,
-      id: 8,
-    },
-  ]);
+
+  let [bookings, setBookings] = React.useState(bookingsData)
+  useEffect(() => { 
+
+    setBookings(bookingsData.reverse())
+  },[bookingsData])
+ 
   let article_per_page = 8;
-  let [bookings, setBookings] = React.useState(arr); //ift needs to be fetched from api
+ //ift needs to be fetched from api
 
   let [showList, setShowList] = React.useState(
     bookings.slice(0, article_per_page)
   );
-  let { smallScreen, tooSmall } = React.useContext(Context);
+  
+  let { smallScreen } = React.useContext(Context);
 
 
   return (
@@ -200,12 +48,12 @@ const Dashboared = () => {
           onChange={(e) => {
             setBookings(
               bookings.filter((booking) =>
-                booking.username
+                booking.userName
                   .toLowerCase()
                   .includes(e.target.value.toLowerCase())
               )
             );
-            e.target.value === "" && setBookings(arr);
+            e.target.value === "" && setBookings(bookingsData);
           }}
         />
       </div>
@@ -266,16 +114,17 @@ const Dashboared = () => {
         <div className="room flex w-[100px] items-center justify-center">Room</div>
       </div>
       {showList.map((e, i) => {
+   
         return (
-          <DashCard
-            key={i}
-            img={e.img}
-            username={e.username}
-            start_date={e.start_date}
-            end_date={e.end_date}
-            status={e.status}
-            room={e.room}
-            suite={e.suite}
+         e.user && <DashCard
+          key={i}
+          img={e.user.picture}
+          username={e.userName}
+          start_date={e.startDay.substring(0,10)}
+          end_date={e.endDay.substring(0,10)}
+          status={e.status}
+          roomType={e.roomType}
+         roomNumber={e.roomNumber}
           />
         );
       })}

@@ -4,6 +4,7 @@ import AddBoking from "./AddBoking";
 import img1 from "../../public/assets/search.png";
 import Pagination from "./Pagination";
 import RoomCard from "./RoomCard";
+import axios from "axios";
 
 const Rooms = () => {
   const [modal, setModal] = useState(false);
@@ -12,7 +13,14 @@ const Rooms = () => {
     setModal(!modal);
   };
   let article_per_page = 11;
-  let [rooms, setRooms] = useState(roomsData);
+  
+  let [rooms, setRooms] = useState([]);
+  React.useEffect(() => { 
+    axios.get("https://aceiny.tech:3331/api/admin/rooms")
+      .then((res) => {
+      setRooms(res.data.rooms.reverse())
+    })
+  },[])
   let [showList, setShowList] = React.useState(
     rooms.slice(0, article_per_page)
   );
@@ -49,12 +57,12 @@ const Rooms = () => {
         {showList.map((room, index) => {
           return (
             <RoomCard
-              room={room.room}
+              roomType={room.roomType}
               toogleModal={toogleModal}
-              beds={room.beds}
-              suite={room.suite}
-              persons={room.persons}
-              status={room.status}
+              beds={room.type}
+              roomNumber={room.roomNumber}
+              persons={room.capacity}
+              status={room.available}
               key={index}
             />
           );
@@ -66,7 +74,7 @@ const Rooms = () => {
         showList={showList}
         setShowList={setShowList}
       />
-      {modal && <AddBoking />}
+      
     </div>
   );
 };

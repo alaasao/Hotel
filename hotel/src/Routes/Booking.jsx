@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import { bookingData } from "../Data";
+import React, { useEffect, useState } from "react";
+
 import Delete from "./Delete";
 import img1 from "../../public/assets/search-normal.png";
 import BookCard from "./BookCard";
 import Pagination from "./Pagination";
-
+import axios from "axios";
+import Context from "../Context";
 const Booking = () => {
-  const [model, setModel] = useState(false);
-
-  const toogleModle = () => {
-    setModel(!model);
-  };
+ 
 
   let article_per_page = 11;
-  let [bookings, setBookings] = useState(bookingData);
-
+  let { bookingsData } = React.useContext(Context);
+  let [bookings, setBookings] = useState(bookingsData);
+  useEffect(() => {
+    setBookings(bookingsData);
+  }, [bookingsData]);
   let [showList, setShowList] = React.useState(
     bookings.slice(0, article_per_page)
   );
@@ -34,12 +34,13 @@ const Booking = () => {
           className="h-[100%] w-[45vw] pl-[8px] placeholder:text-[#4C4C4C] placeholder:text-[18px] focus:outline-none"
           onChange={(e) => {
             setBookings(
-              bookingData.filter((booking) =>
-                booking.username.toLowerCase().includes(e.target.value.toLowerCase())
+              bookingsData.filter((booking) =>
+                booking.username
+                  .toLowerCase()
+                  .includes(e.target.value.toLowerCase())
               )
             );
-            e.target.value === "" && setBookings(bookingData);
-            console.log(bookings);
+            e.target.value === "" && setBookings(bookingsData);
           }}
         />
       </div>
@@ -47,18 +48,19 @@ const Booking = () => {
       <ul>
         {showList.map((booking, index) => {
           return (
-            <BookCard
-              username={booking.username}
+           booking.user && <BookCard
+              username={booking.userName}
               status={booking.status}
-              start_date={booking.start_date}
-              end_date={booking.end_date}
-              room={booking.room}
-              img={booking.img}
-              suite={booking.suite}
+              start_date={booking.startDay.substring(0, 10)}
+              end_date={booking.endDay.substring(0, 10)}
+              roomType={booking.roomType}
+              img={booking.user.picture}
+              roomNumber={booking.roomNumber}
               key={index}
-              toogleModle={toogleModle}
-            />
-          );
+              id={booking.id}
+          
+              />
+              );
         })}
       </ul>
       <Pagination
@@ -67,7 +69,7 @@ const Booking = () => {
         showList={showList}
         setShowList={setShowList}
       />
-      {model && <Delete />}
+     
     </div>
   );
 };

@@ -1,13 +1,19 @@
-import React from 'react'
+import React,{useState} from 'react'
+import AddBoking from './AddBoking'
+const RoomCard = ({ roomType, roomNumber, beds, persons, status }) => {
+  const [modal, setModal] = useState(false)
 
-const RoomCard = ({room,suite,beds,persons,status,toogleModal}) => {
+    const toogleModal = () => {
+      setModal(!modal)
+    }
   return (
 <li>
-            <span>{ room ? `Room ${ room}` : `Suite ${ suite}`}</span>
+            <span>{ `${roomType} ${roomNumber}`}</span>
             <span>{ beds}</span>
             <span>{ persons}</span>
             <span>{ status}</span>
-            <button onClick={toogleModal}>Booking</button>
+      <div className='w-[200px] flex justify-end'>{status === "available" && <button onClick={toogleModal}>book</button>}</div>
+      {modal && <AddBoking roomType={roomType} roomNumber={roomNumber} modal={modal} toogleModal={toogleModal} />}
           </li>
   )
 }

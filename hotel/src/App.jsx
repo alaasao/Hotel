@@ -9,6 +9,8 @@ import Rightside from "./Routes/Rightside";
 import Context from "./Context";
 import { useEffect, useState } from "react";
 import Nav from "./Routes/Nav";
+import axios from "axios";
+import React from "react";
 function App() {
   const routes = [
     {
@@ -43,6 +45,24 @@ function App() {
     setSmallScreen(window.innerWidth < 1280);
     setTooSmall(window.innerWidth < 1024);
   });
+
+  let [usersData, setUsersData] = React.useState([]); 
+  let [bookingsData, setBookingsData] = React.useState([]);
+  useEffect(() => { 
+    axios.get("https://aceiny.tech:3331/api/admin/dashboard")
+      .then((res) => {
+      setUsersData(res.data.success)
+      })
+
+    axios.get("https://aceiny.tech:3331/api/admin/bookings")
+      .then((res) => {
+        setBookingsData(res.data.bookings)
+      })
+  }, [])
+  bookingsData = bookingsData.map((booking) => {
+    return ({ ...booking,"user": usersData.filter((user) => user.userName === booking.userName)[0]})
+  })
+
   return (
     <BrowserRouter>
       <Context.Provider
@@ -55,6 +75,10 @@ function App() {
           setUser,
           tooSmall,
           setTooSmall,
+          usersData,
+          setUsersData,
+          bookingsData,
+          setBookingsData
         }}
       >
         <div

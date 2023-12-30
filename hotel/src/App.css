@@ -243,17 +243,15 @@ input {
     font-size: 24px;
     font-weight: 500;
     line-height: 24px;
-    margin-bottom: 50px;
+
 }
-.delete h3 {
-    margin-bottom: 0;
-}
+
 .delete p {
     color: var(--Neutral1, #8E8E8E);
     font-family: Outfit;
     font-size: 15px;
     font-weight: 400;
-    margin: 12px 0 26px;
+    margin: 12px 0 0px;
 }
 .addBooking .content form {
     display: flex;
@@ -263,6 +261,7 @@ input {
     width: 414px;
     height: 55px;
     margin: 0 auto;
+    margin-bottom: 19px;
     padding: 8px;
     border-radius: 7px;
     background: #E9E9E9;
@@ -272,9 +271,7 @@ input {
     font-weight: 400;
     outline: none;
 }
-.addBooking .content form > input:nth-of-type(2) {
-    margin: 20px auto;
-}
+
 .addBooking .content form > input::placeholder {
     color: #080808;
 }

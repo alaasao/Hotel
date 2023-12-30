@@ -19,7 +19,7 @@ const Pagination = ({article_per_page,arr,showList,setShowList}) => {
       setShowList(arr.slice(startIndex, endIndex));
     }, [startIndex, endIndex, arr]);
   return (
-    <div className="flex gap-[24px] font-[Manrope] cursor-pointer mt-[30px] pagination">
+    <div className="flex gap-[24px] font-[Manrope] cursor-pointer mt-[0px] pagination">
     {startIndex > 0 && (
       <button
         className="text-[#9F9F9F] font-semibold  text-[15px] font-[Manrope]"
