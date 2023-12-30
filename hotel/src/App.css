@@ -389,9 +389,10 @@ input {
         display: none !important;
     }
     .booking, .users, .rooms {
-        padding: 60px 26px 0;
+        padding: 3vw 2.5vw 0;
         padding-top: 90px;
         margin-bottom: 20px;
+    
     }
     .booking h1, .users h1, .rooms h1 {
         padding-left: 0;

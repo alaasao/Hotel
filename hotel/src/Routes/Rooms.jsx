@@ -21,7 +21,7 @@ const Rooms = () => {
 
   return (
     <div className="h-auto rooms">
-      <div className=" border border-[1px] h-[48px] border-[#E6E6E6] rounded-[4px] flex items-center">
+      <div className=" border border-[1px] h-[48px] border-[#E6E6E6] rounded-[4px] flex items-center max-lg:pl-[2.3vw]">
         <div className="w-[52px] h-[100%] flex items-center justify-center">
           {" "}
           <img src={img1} alt="" className="pl-[16px]" />
