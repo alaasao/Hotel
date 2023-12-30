@@ -17,7 +17,7 @@ const Dashboared = () => {
     setBookings(bookingsData.reverse())
   },[bookingsData])
  
-  let article_per_page = 8;
+  let article_per_page = 10;
  //ift needs to be fetched from api
 
   let [showList, setShowList] = React.useState(
@@ -31,7 +31,7 @@ const Dashboared = () => {
     <div
       className={`dashBoard flex w-[100vw] justify-start  h-[100vh] pl-[32px] pt-[60px] mr-[20px] flex-col font-[Outfit]  ${
         smallScreen ? "smallwi h-[auto]" : "wi"
-      } max-lg:w-[95vw] max-xl:mt-[50px] `}
+      } max-lg:w-[95vw] max-xl:mt-[50px] max-lg:pl-[50px]  `}
     >
       <div className=" border border-[1px] h-[48px] border-[#E6E6E6] rounded-[4px] flex items-center">
         <div className="w-[52px] h-[100%] flex items-center justify-center">

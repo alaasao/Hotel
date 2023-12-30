@@ -27,8 +27,8 @@ const DashCard = ({img,username,status,start_date,end_date,roomType,roomNumber,i
             >
               { status.charAt(0).toUpperCase() + status.slice(1)}
             </div>
-            <div className="dateItem w-[200px] flex justify-center gap-[7px] items-center flex-wrap ">
-              { start_date}{" "}d
+            <div className="dateItem w-[220px] flex justify-center gap-[7px] items-center flex-wrap ">
+              { start_date}{" "}
               { start_date && <i className="fa-solid fa-arrow-right"></i>}{" "}
               { end_date}
             </div>

@@ -4,8 +4,14 @@ import React, { useState } from "react";
 
 const AddBoking = ({ roomType, roomNumber, modal, toogleModal }) => {
   function handleSubmit(e) {
-    e.preventDefault();
-
+      e.preventDefault();
+ 
+      console.log(e.target.roomType.value)
+      console.log(e.target.roomNumber.value)
+      console.log(e.target.name.value)
+      console.log(e.target.startDay.value)
+      console.log(e.target.endDay.value)
+      
     axios
       .post(
         `https://aceiny.tech:3331/api/admin/rooms/${e.target.roomType.value}/${e.target.roomNumber.value}/bookings`,
@@ -22,8 +28,8 @@ const AddBoking = ({ roomType, roomNumber, modal, toogleModal }) => {
       .catch((err) => {
         console.log(err);
       });
-      toogleModal();
-      window.location.reload()
+    toogleModal();
+
   }
   return (
     <div className="addBooking">
@@ -35,27 +41,31 @@ const AddBoking = ({ roomType, roomNumber, modal, toogleModal }) => {
           <input
             type="text"
             name="roomNumber"
-            className="hidden"
+                      className="hidden"
+                      
+            
             value={roomNumber}
           />
           <input
             type="text"
-            name="roomType"
+                      name="roomType"
+                      
             className="hidden"
+            
             value={roomType}
           />
           <div className="date">
             <input
               type="text"
-              placeholder="start day"
-              name="startDay"
+                          placeholder="start day"
+                          name="startDay"
               onFocus={(e) => (e.currentTarget.type = "date")}
               onBlur={(e) => (e.currentTarget.type = "text")}
             />
             <input
               type="text"
-              placeholder="end day"
-              name="endDay"
+                          placeholder="end day"
+                          name="endDay"
               onFocus={(e) => (e.currentTarget.type = "date")}
               onBlur={(e) => (e.currentTarget.type = "text")}
             />

@@ -9,7 +9,7 @@ import Context from "../Context";
 const Booking = () => {
  
 
-  let article_per_page = 11;
+  let article_per_page = 15;
   let { bookingsData } = React.useContext(Context);
   let [bookings, setBookings] = useState(bookingsData);
   useEffect(() => {

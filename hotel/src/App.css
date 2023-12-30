@@ -284,11 +284,10 @@ input {
     margin: 0 auto 36px;
 }
 .addBooking .content form .date div {
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
+    position: relative;
 }
-.addBooking .content form .date input {
+.addBooking .content form .date div input {
+    position: relative;
     width: 202px;
     height: 55px;
     padding: 8px;
@@ -300,16 +299,13 @@ input {
     font-weight: 400;
     outline: none;
 }
-.addBooking .content form .date svg {
+.addBooking .content form .date div i {
     position: absolute;
-    top: 16px;
-}
-.addBooking .content form .date .first {
-    left: 38%;
-}
-.addBooking .content form .date .second {
-    right: -4px;
-}
+    color: #5D5D5D;
+    font-size: 22px;
+    right: 12px;
+    top: 17px;
+} 
 .addBooking .content form .date input::placeholder {
     color: #080808;
 }
@@ -355,7 +351,7 @@ input {
 @media (max-width: 768px) {
     .dashBoard {
         width: 100vw !important;
-        padding: 60px 20px 0 !important;
+        padding: 60px 20px 0 ;
         margin-right: 0 !important;
     }
     .firstElement {
@@ -395,7 +391,7 @@ input {
     .booking, .users, .rooms {
         padding: 60px 26px 0;
         padding-top: 90px;
-        margin-bottom: 120px;
+        margin-bottom: 20px;
     }
     .booking h1, .users h1, .rooms h1 {
         padding-left: 0;
@@ -498,7 +494,7 @@ input {
     .delete .content .buttons button,
     .addBooking .content form .buttons button,
     .addBooking .content form .date input {
-        width: 150px;
+        width: 150px !important;
     }
     .addBooking .content form .date input {
         height: 46px;

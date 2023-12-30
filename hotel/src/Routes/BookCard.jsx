@@ -39,6 +39,7 @@ const BookCard = ({
     });
     window.location.reload()
   }
+  console.log(img)
   return (
     <li key={index}>
       <div>
@@ -68,7 +69,7 @@ const BookCard = ({
       <div className="buttons w-[70px] flex justify-end">
         
         {status === "pending" && <img src={img4} alt="icon" onClick={changeState}/>}
-        {status === "pending" && <img src={img3} alt="icon" onClick={toogleModle} />}
+        {status !== "cancel" && <img src={img3} alt="icon" onClick={toogleModle} />}
 {/* 
         {status !== "Cancel" && <img src={img1} alt="icon" />}
         {status !== "Cancel" && <img src={imgIcon} alt="icon" />}
