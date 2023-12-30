@@ -13,7 +13,7 @@ const Booking = () => {
   let { bookingsData } = React.useContext(Context);
   let [bookings, setBookings] = useState(bookingsData);
   useEffect(() => {
-    setBookings(bookingsData);
+    setBookings(bookingsData.reverse());
   }, [bookingsData]);
   let [showList, setShowList] = React.useState(
     bookings.slice(0, article_per_page)

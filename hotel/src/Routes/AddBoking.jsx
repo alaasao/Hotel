@@ -6,11 +6,6 @@ const AddBoking = ({ roomType, roomNumber, modal, toogleModal }) => {
   function handleSubmit(e) {
       e.preventDefault();
  
-      console.log(e.target.roomType.value)
-      console.log(e.target.roomNumber.value)
-      console.log(e.target.name.value)
-      console.log(e.target.startDay.value)
-      console.log(e.target.endDay.value)
       
     axios
       .post(
@@ -29,6 +24,7 @@ const AddBoking = ({ roomType, roomNumber, modal, toogleModal }) => {
         console.log(err);
       });
     toogleModal();
+    window.location.reload();
 
   }
   return (
@@ -41,7 +37,8 @@ const AddBoking = ({ roomType, roomNumber, modal, toogleModal }) => {
           <input
             type="text"
             name="roomNumber"
-                      className="hidden"
+            readOnly
+            placeholder={`${roomType}` +roomNumber}
                       
             
             value={roomNumber}

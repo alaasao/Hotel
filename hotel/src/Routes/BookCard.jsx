@@ -25,10 +25,7 @@ const BookCard = ({
   function changeState() {
     axios
       .post(`https://aceiny.tech:3331/api/admin/bookings/${id}/change-status`, {
-        userName: username,
-        status: "done",
-        startDay: start_date,
-        endDay: end_date,
+ newStatus: "done",
       })
       .then((res) => {
         console.log(res);
@@ -38,7 +35,7 @@ const BookCard = ({
       });
     window.location.reload();
   }
-  console.log(img);
+
   return (
     <li key={index}>
       <div>
@@ -79,6 +76,7 @@ const BookCard = ({
           id={id}
           roomNumber={roomNumber}
           roomType={roomType}
+          status={status}
         />
       )}
     </li>

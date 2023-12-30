@@ -18,7 +18,7 @@ const DashCard = ({img,username,status,start_date,end_date,roomType,roomNumber,i
               className={`status w-[80px] h-[26px] text-[14px] rounded-[5px] flex justify-center items-center justify-self-center self-center ${
                  status === "done"
                   ? "bg-[#28CC42] text-[#FFFBFF]"
-                  :  status === "Cancel"
+                  :  status === "cancel"
                   ? "bg-[#CC2828] text-[#FFFBFF]"
                   :  status === "pending"
                   ? "bg-[#8E8E8E] text-[#FFFBFF]"

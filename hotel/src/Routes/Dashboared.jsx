@@ -17,7 +17,7 @@ const Dashboared = () => {
     setBookings(bookingsData.reverse())
   },[bookingsData])
  
-  let article_per_page = 10;
+  let article_per_page = 6;
  //ift needs to be fetched from api
 
   let [showList, setShowList] = React.useState(
