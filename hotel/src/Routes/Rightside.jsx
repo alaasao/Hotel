@@ -2,9 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Context from "../Context";
-const Rightside = () => {
-  let { smallScreen ,setSmallScreen,user,setUser} = React.useContext(Context);
- // it need to be fetched from the database
+const Rightside = ({ async, setAsync }) => {
+  let { smallScreen, setSmallScreen, user, setUser } =React.useContext(Context);
+  // it need to be fetched from the database
   let [customers, setCustomers] = useState([
     { username: "Karima ", booking: 20, img: "../assets/karima.png" },
     { username: "Karim", booking: 5, img: "../assets/karim.png" },
@@ -15,32 +15,35 @@ const Rightside = () => {
   let [loyals, setLoyal] = useState(
     customers.sort((a, b) => b.booking - a.booking).slice(0, 2)
   );
-    let date = new Date()
- 
-   
+  let date = new Date();
+
   return (
     <div className="rightSide w-[430px]  font-[Outfit] h-[100vh] flex flex-col items-center gap-[120px] pr-[20px] max-lg:items-center  max-lg:w-[96vw] max-lg:h-auto max-lg:mt-[50px]">
-      {!smallScreen && <div className="flex gap-x-[8px] pt-[61px]">
-        <img src="../assets/profile.png" className="w-[40px] h-[40px]" />
-        <div className="w-[134px]">
-          <p className="text-[#3B28CC] font-semibold text-[14px] leading-[16px] h-[16px] overflow-hidden">
-            {user.username}
-          </p>
-          <p className="text-[#B3B3B3] text-[14px] pt-[4px]">
-            {user.superuser == true ? "Admin" : "normal user"}
-          </p>
+      {!smallScreen && (
+        <div className="flex gap-x-[8px] pt-[61px]">
+          <img src="../assets/profile.png" className="w-[40px] h-[40px]" />
+          <div className="w-[134px]">
+            <p className="text-[#3B28CC] font-semibold text-[14px] leading-[16px] h-[16px] overflow-hidden">
+              {user.username}
+            </p>
+            <p className="text-[#B3B3B3] text-[14px] pt-[4px]">
+              {user.superuser == true ? "Admin" : "normal user"}
+            </p>
+          </div>
+          <div className="w-[40px] h-[40px] bg-[#F2F2F2] flex justify-center items-center rounded-[50px]">
+            <i className="fa-regular fa-bell"></i>
+          </div>
         </div>
-        <div className="w-[40px] h-[40px] bg-[#F2F2F2] flex justify-center items-center rounded-[50px]">
-          <i className="fa-regular fa-bell"></i>
-        </div>
-      </div>}
+      )}
       <div className="flex flex-col items-center gap-y-[30px]">
         <h1 className="text-[22px] text-[#3B28CC] ">Loyal Customers</h1>
-              <div className="flex flex-col gap-[8px]">
-                  
-          {loyals.map((loyal,index) => {
+        <div className="flex flex-col gap-[8px]">
+          {loyals.map((loyal, index) => {
             return (
-              <div className="w-[205px] flex items-center gap-x-[8px]" key={index}>
+              <div
+                className="w-[205px] flex items-center gap-x-[8px]"
+                key={index}
+              >
                 <img
                   src={loyal.img}
                   className="w-[32px] w-[32px] rounded-[50px]"
@@ -64,12 +67,22 @@ const Rightside = () => {
       </div>
       <div className="flex flex-col items-center gap-[12px]">
         <p className="text-[#3B28CC] text-[22px]">Async Data</p>
-        <p className="text-[20px] text-center" >
+        <p className="text-[20px] text-center">
           For async data between local storage <br /> and database.
-              </p>
-              <button className="w-[120px] h-[37px] bg-[#3B28CC] rounded-[3px] text-[20px] text-white ">Async</button>
-          </div>
-          <p className="self-end pr-[20px]">{date.getDate()}/{date.getMonth()+1}/{date.getFullYear()}</p>
+        </p>
+        <button
+          className="w-[120px] h-[37px] bg-[#3B28CC] rounded-[3px] text-[20px] text-white "
+          onClick={() => {
+       
+            setAsync((prev) => !prev);
+          }}
+        >
+          Async
+        </button>
+      </div>
+      <p className="self-end pr-[20px]">
+        {date.getDate()}/{date.getMonth() + 1}/{date.getFullYear()}
+      </p>
     </div>
   );
 };

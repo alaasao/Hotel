@@ -12,7 +12,7 @@ const RoomCard = ({ roomType, roomNumber, beds, persons, status }) => {
             <span>{ beds}</span>
             <span>{ persons}</span>
             <span>{ status}</span>
-      <div className='w-[200px] flex justify-end'>{status === "available" && <button onClick={toogleModal}>book</button>}</div>
+      <div className='w-[200px] flex justify-end'>{status === "available" && <button onClick={toogleModal} className='bg-[#3B28CC]'>book</button>}</div>
       {modal && <AddBoking roomType={roomType} roomNumber={roomNumber} modal={modal} toogleModal={toogleModal} />}
           </li>
   )

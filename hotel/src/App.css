@@ -200,7 +200,7 @@ input {
     justify-content: center;
     align-items: center;
     border-radius: 3px;
-    background: var(--Primary-Color, #3B28CC);
+   
     color: #FFFFFF;
 }
 /* rooms */

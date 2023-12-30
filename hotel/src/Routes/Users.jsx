@@ -48,7 +48,7 @@ const Users = () => {
       </div>
       <h1 className="special">Users</h1>
       <ul>
-        {showList.map((user, i) => {
+        {showList.map((user) => {
        
           return (
             <UserCard

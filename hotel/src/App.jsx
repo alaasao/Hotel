@@ -45,23 +45,47 @@ function App() {
     setSmallScreen(window.innerWidth < 1280);
     setTooSmall(window.innerWidth < 1024);
   });
-
-  let [usersData, setUsersData] = React.useState([]); 
+  let [rooms, setRooms] = useState([]);
+  let [usersData, setUsersData] = React.useState([]);
   let [bookingsData, setBookingsData] = React.useState([]);
-  useEffect(() => { 
-    axios.get("https://aceiny.tech:3331/api/admin/dashboard")
+  let [async, setAsync] = React.useState(false);
+  useEffect(() => {
+    axios
+      .get("https://aceiny.tech:3331/api/admin/dashboard")
       .then((res) => {
-      setUsersData(res.data.success)
+        setUsersData(res.data.success);
+        localStorage.setItem("users", JSON.stringify(res.data.success));
       })
+      .catch(() => {
+        setUsersData(JSON.parse(localStorage.getItem("users")));
+      });
 
-    axios.get("https://aceiny.tech:3331/api/admin/bookings")
+    axios
+      .get("https://aceiny.tech:3331/api/admin/bookings")
       .then((res) => {
-        setBookingsData(res.data.bookings)
+        setBookingsData(res.data.bookings);
+        localStorage.setItem("bookings", JSON.stringify(res.data.bookings));
       })
-  }, [])
+      .catch(() => {
+        setBookingsData(JSON.parse(localStorage.getItem("bookings")));
+      });
+    axios
+      .get("https://aceiny.tech:3331/api/admin/rooms")
+      .then((res) => {
+        setRooms(res.data.rooms.reverse());
+        localStorage.setItem("rooms", JSON.stringify(res.data.rooms));
+      })
+      .catch(() => {
+        setRooms(JSON.parse(localStorage.getItem("rooms")));
+      });
+
+  }, [async]);
   bookingsData = bookingsData.map((booking) => {
-    return ({ ...booking,"user": usersData.filter((user) => user.userName === booking.userName)[0]})
-  })
+    return {
+      ...booking,
+      user: usersData.filter((user) => user.userName === booking.userName)[0],
+    };
+  });
 
   return (
     <BrowserRouter>
@@ -78,7 +102,9 @@ function App() {
           usersData,
           setUsersData,
           bookingsData,
-          setBookingsData
+          setBookingsData,
+          rooms,
+          setRooms,
         }}
       >
         <div
@@ -98,7 +124,7 @@ function App() {
             ))}
             <Route path="/" element={<Dashboared />} />
           </Routes>
-          <Rightside />
+          <Rightside async={async} setAsync={setAsync} />
         </div>
       </Context.Provider>
     </BrowserRouter>

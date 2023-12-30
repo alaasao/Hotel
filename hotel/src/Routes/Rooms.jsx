@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import img1 from "../../public/assets/search.png";
 import Pagination from "./Pagination";
 import RoomCard from "./RoomCard";
 import axios from "axios";
-
+import Context from "../Context";
 const Rooms = () => {
   const [modal, setModal] = useState(false);
 
@@ -13,12 +13,8 @@ const Rooms = () => {
   };
   let article_per_page = 11;
 
-  let [rooms, setRooms] = useState([]);
-  React.useEffect(() => {
-    axios.get("https://aceiny.tech:3331/api/admin/rooms").then((res) => {
-      setRooms(res.data.rooms.reverse());
-    });
-  }, []);
+  let {rooms, setRooms} = useContext(Context);  
+
   let [showList, setShowList] = React.useState(
     rooms.slice(0, article_per_page)
   );

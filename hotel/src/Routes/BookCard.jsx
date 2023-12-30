@@ -42,7 +42,7 @@ const BookCard = ({
   return (
     <li key={index}>
       <div>
-        <img src={img} className="w-[32px]" />
+        <img src={img} className="w-[32px] h-[32px] rounded-[50%]" />
         <span className="w-[150px]">{username}</span>
       </div>
       <span

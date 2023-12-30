@@ -8,7 +8,7 @@ const DashCard = ({img,username,status,start_date,end_date,roomType,roomNumber,i
             key={i}
           >
             <div className="flex gap-[8px] items-center nameImg w-[150px]">
-              <img src={ img} className="rounded-[50%]" />
+              <img src={ img} className="rounded-[50%] w-[32px] h-[32px]" />
               <p className="font-semibold text-[15px] font-[700] text-[#808080] font-[Manrope]">
                 {" "}
                 { username}
