@@ -20,7 +20,7 @@ const Rooms = () => {
   );
 
   return (
-    <div className="rooms">
+    <div className="h-auto rooms">
       <div className=" border border-[1px] h-[48px] border-[#E6E6E6] rounded-[4px] flex items-center">
         <div className="w-[52px] h-[100%] flex items-center justify-center">
           {" "}
