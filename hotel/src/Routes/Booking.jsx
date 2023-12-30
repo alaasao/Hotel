@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Delete from "./Delete";
+
 import img1 from "../../public/assets/search-normal.png";
 import BookCard from "./BookCard";
 import Pagination from "./Pagination";

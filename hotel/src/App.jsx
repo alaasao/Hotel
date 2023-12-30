@@ -96,6 +96,7 @@ function App() {
                 key={index}
               />
             ))}
+            <Route path="/" element={<Dashboared />} />
           </Routes>
           <Rightside />
         </div>

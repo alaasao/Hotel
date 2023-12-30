@@ -72,7 +72,7 @@ const AddBoking = ({ roomType, roomNumber, modal, toogleModal }) => {
           </div>
           <div className="buttons">
             <button type="submit">Confirm</button>
-            <button onClick={toogleModal}>Cancel</button>
+            <button onClick={toogleModal} className="bg-white">Cancel</button>
           </div>
         </form>
       </div>
