@@ -2,4 +2,8 @@
     "rewrites": [
       { "source": "/(.*)", "destination": "/" }
     ]
+    ,
+      "public": true
+    
   }
+  
