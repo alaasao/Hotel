@@ -1,5 +1,9 @@
 {
-
+    "rewrites": [
+      { "source": "/(.*)", "destination": "/" }
+    ],
+    "buildCommand": "pnpm turbo build",
       "public": true
+    
   }
   
