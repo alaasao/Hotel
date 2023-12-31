@@ -2,8 +2,12 @@
     "rewrites": [
       { "source": "/(.*)", "destination": "/" }
     ],
+<<<<<<< HEAD
    
       "public": true
+=======
+         "public": true
+>>>>>>> 5774e93b0ed699c67871c09b406fb00ce3fff63e
     
   }
   
