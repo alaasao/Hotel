@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
+import Context from "../Context";
 
 const Delete = ({ delModel, setDelModel, id }) => {
+   let {setAsync} = React.useContext(Context)
   const DeleteModal = () => {
     setDelModel(!delModel);
   };
@@ -14,7 +16,7 @@ const Delete = ({ delModel, setDelModel, id }) => {
       .catch((err) => {
         console.log(err);
       });
-      window.location.reload()
+      setAsync((prev) => !prev)
   }
 
   return (

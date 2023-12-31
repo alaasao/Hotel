@@ -14,9 +14,9 @@ const Rooms = () => {
   let article_per_page = 11;
 
   let {rooms, setRooms} = useContext(Context);  
-
+let [roomsData, setRoomsData] = React.useState(rooms);
   let [showList, setShowList] = React.useState(
-    rooms.slice(0, article_per_page)
+    roomsData.slice(0, article_per_page)
   );
 
   return (
@@ -34,15 +34,13 @@ const Rooms = () => {
           placeholder="Search users,rooms"
           className="h-[100%] w-[45vw] pl-[8px] placeholder:text-[#4C4C4C] placeholder:text-[18px] focus:outline-none"
           onChange={(e) => {
-            setRooms(
+       
+            setRoomsData(
               rooms.filter((room) =>
-                room.room
-                  ? room.room.toString().includes(e.target.value)
-                  : room.suite.toString().includes(e.target.value)
+               room.roomNumber.toString().includes(e.target.value)
               )
             );
 
-            e.target.value === "" && setRooms(roomsData);
           }}
         />
       </div>
@@ -64,7 +62,7 @@ const Rooms = () => {
       </ul>
       <Pagination
         article_per_page={article_per_page}
-        arr={rooms}
+        arr={roomsData}
         showList={showList}
         setShowList={setShowList}
       />

@@ -35,7 +35,7 @@ const Booking = () => {
           onChange={(e) => {
             setBookings(
               bookingsData.filter((booking) =>
-                booking.username
+                booking.userName
                   .toLowerCase()
                   .includes(e.target.value.toLowerCase())
               )

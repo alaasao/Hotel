@@ -25,7 +25,16 @@ const Dashboared = () => {
   );
   
   let { smallScreen } = React.useContext(Context);
-
+  let tc=0, dc = 0;
+  for (let index = 0; index < bookingsData.length; index++) {
+   if (bookingsData[index].status === "done") {
+      dc++;
+    }
+    if (bookingsData[index].status !== "cancel") {
+      tc++;
+    }
+    
+  }
 
   return (
     <div
@@ -65,7 +74,7 @@ const Dashboared = () => {
             <img src="../assets/Frame_37.png" className="w-[25vw] h-[80px]" />
             <div className="absolute top-0 text-white pl-[11px]">
               <p className=" text-[35px] leading-normal">
-                {bookingTot.toLocaleString()}
+                {tc.toLocaleString()}
               </p>{" "}
               <p className="text-[16px] leading-[16px]">Booking Operations</p>
             </div>
@@ -75,7 +84,7 @@ const Dashboared = () => {
             <img src="../assets/Frame_37.png" className="w-[25vw] h-[80px]" />
             <div className="absolute top-0 text-white pl-[11px]">
               <p className=" text-[35px] leading-normal">
-                {doneBooking.toLocaleString()}
+                {dc.toLocaleString()}
               </p>{" "}
               <p className="text-[16px] leading-[16px]">Done Booking</p>
             </div>

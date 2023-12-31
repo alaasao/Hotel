@@ -105,6 +105,8 @@ function App() {
           setBookingsData,
           rooms,
           setRooms,
+          async,
+          setAsync,
         }}
       >
         <div
@@ -124,7 +126,7 @@ function App() {
             ))}
             <Route path="/" element={<Dashboared />} />
           </Routes>
-          <Rightside async={async} setAsync={setAsync} />
+          <Rightside  />
         </div>
       </Context.Provider>
     </BrowserRouter>
