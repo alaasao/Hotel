@@ -1,8 +1,9 @@
 import axios from "axios";
 import { root } from "postcss";
 import React, { useState } from "react";
-
+import Context from "../Context";
 const AddBoking = ({ roomType, roomNumber, modal, toogleModal }) => {
+  let {setAsync} = React.useContext(Context);
   function handleSubmit(e) {
       e.preventDefault();
  
@@ -24,7 +25,7 @@ const AddBoking = ({ roomType, roomNumber, modal, toogleModal }) => {
         console.log(err);
       });
     toogleModal();
-    window.location.reload();
+    setAsync(prev => !prev)
 
   }
   return (

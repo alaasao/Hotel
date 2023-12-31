@@ -1,6 +1,8 @@
 import axios from "axios";
-
-const DeleteBook = ({ model, setModel, id, roomNumber, roomType ,status}) => {
+import React, { useContext } from "react";
+import Context from "../Context";
+const DeleteBook = ({ model, setModel, id, roomNumber, roomType, status }) => {
+  let {setAsync} = useContext(Context);
   function handleSubmit(e) {
     e.preventDefault();
     if (status === "pending") {
@@ -28,7 +30,7 @@ const DeleteBook = ({ model, setModel, id, roomNumber, roomType ,status}) => {
           console.log(err);
         });
     }
-   window.location.reload()
+    setAsync((prev) => !prev)  
   }
 
   return (

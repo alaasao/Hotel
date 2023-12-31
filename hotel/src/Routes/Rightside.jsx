@@ -1,20 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Context from "../Context";
-const Rightside = ({ async, setAsync }) => {
-  let { smallScreen, setSmallScreen, user, setUser } =React.useContext(Context);
+import axios from "axios";
+const Rightside = () => {
+  let { setAsync, async } = React.useContext(Context);
+  let { smallScreen, setSmallScreen, user, setUser } =
+    React.useContext(Context);
   // it need to be fetched from the database
-  let [customers, setCustomers] = useState([
-    { username: "Karima ", booking: 20, img: "../assets/karima.png" },
-    { username: "Karim", booking: 5, img: "../assets/karim.png" },
-    { username: "Ahmed ", booking: 1 },
-    { username: "ali ", booking: 2 },
-  ]);
+  // let [customers, setCustomers] = useState([
+  //   { userName: "Karima ", booking: 20, img: "../assets/karima.png" },
+  //   { userName: "Karim", booking: 5, img: "../assets/karim.png" },
+  //   { userName: "Ahmed ", booking: 1 },
+  //   { userName: "ali ", booking: 2 },
+  // ]);
 
-  let [loyals, setLoyal] = useState(
-    customers.sort((a, b) => b.booking - a.booking).slice(0, 2)
-  );
+  let [loyals, setLoyal] = useState();
+  useEffect(() => {
+    axios.get("https://aceiny.tech:3331/api/admin/top-users").then((res) => {
+      setLoyal(res.data);
+    });
+  }, []);
   let date = new Date();
 
   return (
@@ -38,25 +44,26 @@ const Rightside = ({ async, setAsync }) => {
       <div className="flex flex-col items-center gap-y-[30px]">
         <h1 className="text-[22px] text-[#3B28CC] ">Loyal Customers</h1>
         <div className="flex flex-col gap-[8px]">
-          {loyals.map((loyal, index) => {
-            return (
-              <div
-                className="w-[205px] flex items-center gap-x-[8px]"
-                key={index}
-              >
-                <img
-                  src={loyal.img}
-                  className="w-[32px] w-[32px] rounded-[50px]"
-                />
-                <p className="text-[#4C4C4C] w-[89px] overflow-hidden ">
-                  {loyal.username}{" "}
-                </p>
-                <div className="text-[12px] text-[#808080] w-[100px]">
-                  +{loyal.booking - 1} Bookings
+          {loyals &&
+            loyals.map((loyal, index) => {
+              return (
+                <div
+                  className="w-[205px] flex items-center gap-x-[8px]"
+                  key={index}
+                >
+                  <img
+                    src={loyal.picture}
+                    className="w-[32px] w-[32px] rounded-[50px]"
+                  />
+                  <p className="text-[#4C4C4C] w-[89px] overflow-hidden ">
+                    {loyal.userName}{" "}
+                  </p>
+                  <div className="text-[12px] text-[#808080] w-[100px]">
+                    +{loyal.bookingCount - 1} Bookings
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
         <Link
           to="/users"
@@ -73,7 +80,6 @@ const Rightside = ({ async, setAsync }) => {
         <button
           className="w-[120px] h-[37px] bg-[#3B28CC] rounded-[3px] text-[20px] text-white "
           onClick={() => {
-       
             setAsync((prev) => !prev);
           }}
         >
