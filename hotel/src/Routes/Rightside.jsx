@@ -7,13 +7,7 @@ const Rightside = () => {
   let { setAsync, async } = React.useContext(Context);
   let { smallScreen, setSmallScreen, user, setUser } =
     React.useContext(Context);
-  // it need to be fetched from the database
-  // let [customers, setCustomers] = useState([
-  //   { userName: "Karima ", booking: 20, img: "../assets/karima.png" },
-  //   { userName: "Karim", booking: 5, img: "../assets/karim.png" },
-  //   { userName: "Ahmed ", booking: 1 },
-  //   { userName: "ali ", booking: 2 },
-  // ]);
+
 
   let [loyals, setLoyal] = useState();
   useEffect(() => {
