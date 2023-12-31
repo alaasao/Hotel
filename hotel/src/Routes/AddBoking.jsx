@@ -54,15 +54,15 @@ const AddBoking = ({ roomType, roomNumber, modal, toogleModal }) => {
           <div className="date">
             <input
               type="text"
-                          placeholder="start day"
-                          name="startDay"
+              placeholder="start day"
+              name="startDay"
               onFocus={(e) => (e.currentTarget.type = "date")}
               onBlur={(e) => (e.currentTarget.type = "text")}
             />
             <input
               type="text"
-                          placeholder="end day"
-                          name="endDay"
+              placeholder="end day"
+              name="endDay"
               onFocus={(e) => (e.currentTarget.type = "date")}
               onBlur={(e) => (e.currentTarget.type = "text")}
             />

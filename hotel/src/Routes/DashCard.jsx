@@ -4,7 +4,7 @@ const DashCard = ({img,username,status,start_date,end_date,roomType,roomNumber,i
   return (
     <div>
           <div
-            className="w-[100%]  h-[40px] flex justify-between mt-[17px] "
+            className="w-[100%]  h-[40px] flex justify-between mt-[10px] mb-[20px]"
             key={i}
           >
             <div className="flex gap-[8px] items-center nameImg w-[150px]">
